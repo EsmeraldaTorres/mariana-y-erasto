@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "principalName": "Familia Kruse",
+    "accompanist": [
+      { "name": "Juan Pérez", "asist": false },
+      { "name": "Panchita Juárez", "asist": false },
+      { "name": "Sandra", "asist": false }
+    ]
+  },
+  {
+    "id": 2,
+    "principalName": "Jannet Hernández",
+    "accompanist": [{ "name": "Nathaniel Spiers", "asist": false }]
+  },
+  {
+    "id": 3,
+    "principalName": "Familia Pérez Torres",
+    "accompanist": [
+      { "name": "Omar Daviv", "asist": false },
+      { "name": "Esmeralda Torres", "asist": false }
+    ]
+  }
+]
