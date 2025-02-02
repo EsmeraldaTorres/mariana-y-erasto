@@ -82,7 +82,7 @@ const Intivacion = () => {
 
   const [text, setText] = useState({
     firstText:
-      " Por favor confirma tu asistencia al evento antes del 15 de Junio, después de esta fecha la confirmación no podrá realizarse.",
+      " Por favor confirma tu asistencia al evento antes del 15 de Octubre, después de esta fecha la confirmación no podrá realizarse.",
     secondText:
       "En caso de que no puedan asistir, por favor, también háznoslo saber.",
     thirdText:
@@ -222,7 +222,7 @@ const Intivacion = () => {
     if (id) {
       fetchDataByGuest(id, code);
     }
-    const countDownDate = new Date("Dec 26, 2024 09:30").getTime();
+    const countDownDate = new Date("Dec 26, 2025 09:30").getTime();
     const updateCountdown = () => {
       const now = new Date().getTime();
       const distance = countDownDate - now;
@@ -251,7 +251,7 @@ const Intivacion = () => {
   }, []);
 
   useEffect(() => {
-    const countDownDateAsistence = new Date("Dec 15, 2024 09:31").getTime();
+    const countDownDateAsistence = new Date("Oct 15, 2025 09:31").getTime();
 
     const countdownAsistence = () => {
       const now = new Date().getTime();
