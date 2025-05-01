@@ -511,13 +511,13 @@ const AllGuestPage = () => {
             {etiqueta === "Todos" && addTable && (
               <>
                 <button
-                  className="btn-save mt-4 w-100 btn-min-w mr-4"
+                  className="btn-save mt-4 w-100 btn-save-guest mr-4"
                   onClick={handleAssignTables}
                 >
                   Guardar cambios
                 </button>
                 <button
-                  className="btn-download mt-4 w-100 btn-no-asistir btn-min-w ml-4 p-3"
+                  className="btn-download mt-4 w-100 btn-no-asistir btn-download-pdf-guest ml-4 p-3"
                   onClick={handleDownloadPdf}
                 >
                   Descargar PDF

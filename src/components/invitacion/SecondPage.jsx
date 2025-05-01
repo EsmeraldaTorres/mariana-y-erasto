@@ -5,8 +5,8 @@ import lineaAlReves from "../../assets/img/lineaalreves.png";
 const SecondPage = ({ timeLeft }) => {
   return (
     <>
-      <section className="second-section">
-        <div className="container d-flex justify-content-center align-items-center">
+      <section className="container-date">
+        <div className="container1 d-flex justify-content-center align-items-center">
           <div className="col-10">
             <div data-aos="fade-down" data-aos-duration="2000">
               <div className="pb-4 d-flex justify-content-center align-items-center">

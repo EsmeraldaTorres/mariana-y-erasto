@@ -7,60 +7,33 @@ const GuestContext = createContext();
 export const useGuest = () => useContext(GuestContext);
 
 export const GuestProvider = ({ children }) => {
-  const [guest, setGuest] = useState({
-    code: "108353",
-    etiqueta:"novia",
-    qrUrl:"pases-boda-arturo-y-noemi/17/Araceli%20López/108353",
-    id:"17",
-    principalName:"Familia Silván",
-    acompanist: [
-      {
-        name: "Mario Silván",
-        asist: null,
-        etiqueta:"novia",
-        principalName:"Familia Silván",
-      },
-      {
-        name: "Araceli López",
-        asist: null,
-        etiqueta:"novia",
-        principalName:"Familia Silván",
-      },
-      {
-        name: "Roberto Silván",
-        asist: null,
-        etiqueta:"novia",
-        principalName:"Familia Silván",
-      }
-    ]
-    
-  });
+  const [guest, setGuest] = useState(null);
   const [reservationDone, setReservationDone] = useState(false);
 
-  // const fetchDataByGuest = async (id, code) => {
-  //   try {
-  //     let arrayPeople = [];
-  //     const querySnapshot = await getDocs(collection(db, "people"));
-  //     querySnapshot.forEach((doc) => {
-  //       arrayPeople.push(JSON.parse(JSON.stringify(doc.data(), null, 2)));
-  //     });
-  //     const person = arrayPeople?.filter((person) => person.id === id);
-  //     const uniquecode = person[0]?.code;
+  const fetchDataByGuest = async (id, code) => {
+    try {
+      let arrayPeople = [];
+      const querySnapshot = await getDocs(collection(db, "people"));
+      querySnapshot.forEach((doc) => {
+        arrayPeople.push(JSON.parse(JSON.stringify(doc.data(), null, 2)));
+      });
+      const person = arrayPeople?.filter((person) => person.id === id);
+      const uniquecode = person[0]?.code;
 
-  //     const notConfirmation = person[0]?.acompanist?.filter(
-  //       (acomp) => acomp.asist === null
-  //     );
-  //     if (notConfirmation && notConfirmation.length != 0) {
-  //       setReservationDone(false);
-  //     } else setReservationDone(true);
+      const notConfirmation = person[0]?.acompanist?.filter(
+        (acomp) => acomp.asist === null
+      );
+      if (notConfirmation && notConfirmation.length != 0) {
+        setReservationDone(false);
+      } else setReservationDone(true);
 
-  //     if (uniquecode === code) {
-  //       setGuest(person[0]);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching data: ", error);
-  //   }
-  // };
+      if (uniquecode === code) {
+        setGuest(person[0]);
+      }
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  };
 
   const handleSubmitMessage = async (e) => {
     e.preventDefault();
@@ -81,7 +54,7 @@ export const GuestProvider = ({ children }) => {
       value={{
         guest,
         setGuest,
-        // fetchDataByGuest,
+        fetchDataByGuest,
         reservationDone,
         setReservationDone,
         handleSubmitMessage,

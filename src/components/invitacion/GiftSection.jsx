@@ -11,7 +11,7 @@ const GiftSection = () => {
           <img loading="lazy" className="line" src={lineaAlReves} alt="linea" />
         </div>
         <div className="py-4 d-flex justify-content-center">
-          <p className="text2 text-center lead">
+          <p className="w-75 text-center lead">
             ¡Que nos acompañes es lo más importante! Y sí está en tu disposición
             realizar una muestra de cariño estaremos muy agradecidos
           </p>
@@ -21,7 +21,7 @@ const GiftSection = () => {
         </div>
       </section>
       <section className="window-regalos d-flex justify-content-center align-items-center">
-        <div className="w-80 h-80 d-flex justify-content-center">
+        <div className="w-75 d-flex justify-content-center">
           <div
             className="card-regalos p-4"
             data-aos="fade-up"
@@ -46,7 +46,7 @@ const GiftSection = () => {
                 <div className="d-flex justify-content-center">
                   <a
                     href="https://www.liverpool.com.mx/tienda/home"
-                    className="w-80 d-flex justify-content-center"
+                    className="w-75 d-flex justify-content-center"
                   >
                     <button className="btn btn-light display-6 text-center my-3 p-2">
                       Ir a mesa de regalos
@@ -60,7 +60,7 @@ const GiftSection = () => {
                   <i className="bi bi-envelope icon-sobre"></i>
                 </div>
                 <div className="d-flex justify-content-center">
-                  <p className="w-80 text-center display-6 text-shadow">
+                  <p className="w-75 text-center display-6 text-shadow">
                     Sobre con dinero en efectivo
                   </p>
                 </div>
@@ -70,7 +70,7 @@ const GiftSection = () => {
         </div>
       </section>
       <section className="d-flex justify-content-center align-items-center">
-        <div className="w-80 py-4 text-center mt-4">
+        <div className="w-75 py-4 text-center mt-4">
           <p className="display-6" data-aos="flip-up" data-aos-duration="2000">
             ¡Gracias por tus muestras de cariño!
           </p>

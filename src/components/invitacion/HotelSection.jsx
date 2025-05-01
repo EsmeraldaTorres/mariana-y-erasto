@@ -25,7 +25,7 @@ const HotelSection = () => {
                   data-aos="zoom-in-up"
                   data-aos-easing="linear"
                   data-aos-duration="1500"
-                  className="f-w-700 txt-pink-dark pr-4 pl-4 mb-4 display-5 title2 text-center font-paris"
+                  className="f-w-700 pr-4 pl-4 mb-4 display-5 title2 text-center font-paris"
                 >
                   Gran Hotel Xalapa
                 </h2>
@@ -44,7 +44,7 @@ const HotelSection = () => {
                   data-aos="fade-down"
                   data-aos-easing="linear"
                   data-aos-duration="1500"
-                  className="txt-pink-dark mt-2 font-paris display-5 pl-2 pr-2 text-center
+                  className="mt-2 font-paris display-5 pl-2 pr-2 text-center
                     "
                 >
                   {" "}
@@ -87,7 +87,7 @@ const HotelSection = () => {
                   data-aos="zoom-in-up"
                   data-aos-easing="linear"
                   data-aos-duration="1500"
-                  className="f-w-700 txt-pink-dark pr-4 pl-4 mb-4 display-5 title2 text-center font-paris"
+                  className="f-w-700  pr-4 pl-4 mb-4 display-5 title2 text-center font-paris"
                 >
                   Holiday Inn Express Xalapa
                 </h2>
@@ -106,7 +106,7 @@ const HotelSection = () => {
                   data-aos="fade-down"
                   data-aos-easing="linear"
                   data-aos-duration="1500"
-                  className="txt-pink-dark mt-2 font-paris display-5 pl-2 pr-2 text-center
+                  className=" mt-2 font-paris display-5 pl-2 pr-2 text-center
                     "
                 >
                   {" "}
@@ -149,7 +149,7 @@ const HotelSection = () => {
                   data-aos="zoom-in-up"
                   data-aos-easing="linear"
                   data-aos-duration="1500"
-                  className="f-w-700 txt-pink-dark pr-4 pl-4 mb-4 display-5 title2 text-center font-paris"
+                  className="f-w-700 pr-4 pl-4 mb-4 display-5 title2 text-center font-paris"
                 >
                   Gamma Xalapa Nubara
                 </h2>
@@ -168,10 +168,9 @@ const HotelSection = () => {
                   data-aos="fade-down"
                   data-aos-easing="linear"
                   data-aos-duration="1500"
-                  className="txt-pink-dark font-paris display-5 mt-2 pl-2 pr-2 text-center
+                  className=" font-paris display-5 mt-2 pl-2 pr-2 text-center
                     "
                 >
-                  {" "}
                   <i className="bi bi-car-front-fill "></i> A 32 min de la
                   fiesta
                 </p>

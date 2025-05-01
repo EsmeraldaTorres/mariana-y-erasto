@@ -32,7 +32,7 @@ const FirstPage = ({ isPlaying, togglePlayPause, audioRef }) => {
 
           <p>audio</p>
         </div>
-        <div className="player-audio">
+        <div >
           <ReactAudioPlayer
             ref={audioRef}
             id="audio"

@@ -18,7 +18,7 @@ const DressCode = () => {
             data-aos="fade-down"
             data-aos-easing="linear"
             data-aos-duration="1500"
-            className="w-80 img-vestimenta dress-code-img"
+            className="w-75 img-vestimenta dress-code-img"
             src={dressCode}
             alt="dress-code"
           />

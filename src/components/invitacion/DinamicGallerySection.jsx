@@ -3,7 +3,7 @@ import lineDecoration from "../../assets/img/line2.png"
 const DinamicGallerySection = () => {
   return (
     <>
-      <section className="window-back2">
+      <section className="position-relative">
         <div
           className="dinamic-galery text-white text-shadow text-center title2 d-flex justify-content-center align-items-center font-paris"
           data-aos="fade-right"

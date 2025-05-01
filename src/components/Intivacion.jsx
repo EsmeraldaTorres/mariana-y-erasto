@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 // Components
@@ -18,17 +17,6 @@ import AddToMobileCalendar from "./invitacion/AddToMobileCalendar";
 import AddToGoogleCalendar from "./invitacion/AddToGoogleCalendar";
 import jsPDF from "jspdf";
 
-// Libraries
-import {
-  doc,
-  collection,
-  query,
-  where,
-  getDocs,
-  updateDoc,
-} from "firebase/firestore";
-
-import { db } from "../firebase";
 import { useState, useRef } from "react";
 import decoration from "../assets/img/Untitled design (3).png";
 
@@ -131,14 +119,11 @@ const Intivacion = () => {
   useEffect(() => {
     if (openModal) {
       document.body.classList.add("overflow-hidden");
-      // document.body.classList.add("postion-fixed");
     } else {
       document.body.classList.remove("overflow-hidden");
-      // document.body.classList.remove("postion-fixed");
     }
     return () => {
       document.body.classList.remove("overflow-hidden");
-      // document.body.classList.remove("postion-fixed");
     };
   }, [openModal]);
 
@@ -154,31 +139,25 @@ const Intivacion = () => {
     const pdfWidth = pdf.internal.pageSize.getWidth();
     const pdfHeight = pdf.internal.pageSize.getHeight();
 
-    // Cargar la imagen de fondo
     const backgroundImageUrl =
       "https://images.pexels.com/photos/27060172/pexels-photo-27060172/free-photo-of-blanco-y-negro-naturaleza-pareja-amor.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
     const backgroundImage = new Image();
     backgroundImage.src = backgroundImageUrl;
 
     backgroundImage.onload = () => {
-      // Agregar la imagen de fondo en todo el tamaño de la hoja
       pdf.addImage(backgroundImage, "JPEG", 0, 0, pdfWidth, pdfHeight);
 
-      // Posicionar el título encima de la imagen
       pdf.setFontSize(24);
       pdf.setTextColor(255, 255, 255); // Color blanco para el texto
       pdf.text("Tickets Boda Arturo y Noemí", pdfWidth / 2, 100, {
         align: "center",
       });
 
-      // Renderizar el QR desde el canvas y agregarlo al PDF
       const qrCanvas = qrRef.current.querySelector("canvas");
       if (qrCanvas) {
         const qrImageData = qrCanvas.toDataURL("image/png");
         pdf.addImage(qrImageData, "PNG", pdfWidth / 2 - 50, 120, 100, 100);
       }
-
-      // Guardar el PDF
       pdf.save("tickets_boda_arturo_noemi.pdf");
     };
   };
@@ -188,16 +167,13 @@ const Intivacion = () => {
     const filterGuestFalse = guest?.acompanist?.filter(
       (g) => g.asist === false
     );
-    // Si ya todos los invitados han dado una respuesta entonces
     if (
       filterGuestNull?.length === 0 &&
       filterGuestFalse?.length != guest?.acompanist?.length
     ) {
-      // El botón de obtener mis pases se habilita
       setDisabledBtn(false);
     } else {
       setDisabledBtn(true);
-      // setReservationDeny(true);
     }
 
     if (
@@ -269,7 +245,7 @@ const Intivacion = () => {
   }, []);
 
   return (
-    <div className={` w-100 ${!openInvitation && "avoiding-scroll"}`}>
+    <div className={` w-100 ${!openInvitation && "h-100 overflow-hidden"}`}>
       {/* Sobre */}
       <Sobre
         abrir={abrir}
@@ -285,13 +261,13 @@ const Intivacion = () => {
           audioRef={audioRef}
         />
         <SecondPage timeLeft={timeLeft} />
-        <section className="pase">
+        <section className="ribbon">
           <p className="m-0 display-6">El inicio de la familia Juárez Macías</p>
         </section>
         <ParentsSection />
         <section className="container3 bg-gold p-4 m-0">
           <div className="d-flex justify-content-center">
-            <p className="w-80 text-center text-white display-6 m-0 p-2">
+            <p className="w-75 text-center text-white display-6 m-0 p-2">
               Compartir estos momentos con ustedes, los hace inolvidables.
             </p>
           </div>
@@ -315,7 +291,7 @@ const Intivacion = () => {
         </section>
         <HotelSection />
 
-        <section className="pase bg-gold p-4">
+        <section className="ribbon bg-gold p-4">
           <p className="text-white text-center display-6">
             Este día será muy especial y que asistas ¡lo hará aún más!
           </p>
@@ -328,31 +304,37 @@ const Intivacion = () => {
         </section>
         <DressCode />
         <PhotoGallerySection />
-        <section className="pase bg-gold p-4">
+        <section className="ribbon bg-gold p-4">
           <p className="text-white text-center display-6">
             Este día es muy especial y que vayas ¡lo hace aún más!
           </p>
         </section>
         <section className="text-center p-4 lead overflow-hidden">
-          <h3
+        <h3
             className="font-paris principal-name-guest "
-            data-aos="zoom-out"
+           data-aos="zoom-in"
             data-aos-duration="2000"
           >
-            Familia Silván
+            {guest?.principalName}
           </h3>
 
-          <p>Hemos reservado 3 lugares para ustedes</p>
-
+          {guest?.code === "320922" || guest?.acompanist?.length === 1 ? (
+            <p>Hemos reservado {guest?.acompanist?.length} lugar para ti</p>
+          ) : (
+            <>
+              <p>
+                Hemos reservado {guest?.acompanist?.length} lugares para ustedes
+              </p>
+            </>
+          )}
           <div className={`${text.firstText === "" && "mb-4"}`}>
             {guest?.acompanist?.map((person, key) => (
               <p
                 key={key}
                 className="mb-0 display-6"
-                data-aos="fade-up"
-                data-aos-duration="1000"
+                data-aos="zoom-in"                data-aos-duration="1000"
               >
-                {person.name}
+             {key + 1}.-   {person.name}
               </p>
             ))}
           </div>
@@ -380,7 +362,7 @@ const Intivacion = () => {
             }`}
           >
             <div
-              className="w-80 py-4"
+              className="w-75 py-4"
               data-aos="fade-in"
               data-aos-duration="3000"
             >
@@ -459,20 +441,7 @@ const Intivacion = () => {
                       : "No podremos asistir "}
                   </button>
                 </div>
-                <div className="display-6 mt-4">
-                  <p>
-                    Querida bride, esta es una invitación muestra genérica del
-                    sistema de confirmación de asistencia.
-                  </p>
-                  <p>
-                    Tenemos más funcionalidades PRECISAS que puedes ver en
-                    nuestra página web o puedes solicitarla directamente con
-                    Esmeralda
-                  </p>
-                  <p>
-                    Te atenderemos con gusto
-                  </p>
-                </div>
+
               </>
             ) : (
               text.firstText === "" && (
@@ -567,7 +536,7 @@ const Intivacion = () => {
                               </div>
                             </div>
                           </div>
-                          {/* <div className="mb-4 mt-4">
+                         <div className="mb-4 mt-4">
                               <h3 className="font-gold text-center">
                                 Muestra tu CÓDIGO QR{" "}
                                 <span className="font-weigth-bold">solo</span> a
@@ -625,7 +594,7 @@ const Intivacion = () => {
                               </p>
                               <div className="w-100 d-flex flex-column justify-content-center align-items-center">
                                 Contacto
-                                <div className="d-flex justify-content-evenly w-80">
+                                <div className="d-flex justify-content-evenly w-75">
                                   <Link
                                     target="_blank"
                                     to="https://wa.me/524426147355?text=Hola%20Esmeralda!%20Me%20interesa%20contratar%20tu%20servicio. Necesito una invitación para (especifica tu evento)"
@@ -656,7 +625,6 @@ const Intivacion = () => {
                                 </div>
                               </div>
                             </div>
-                           */}
                         </div>
                       ) : (
                         cancelAsistence && (

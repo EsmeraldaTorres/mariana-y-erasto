@@ -6,7 +6,7 @@ const LastPage = () => {
   return (
     <>
       <section
-        className="last-window-back d-flex justify-content-between
+        className="last-window d-flex justify-content-between
          align-items-center flex-column"
       >
         <div className="font-paris display-2 text-white p-4 opacity-0">

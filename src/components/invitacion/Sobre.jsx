@@ -7,9 +7,9 @@ const Sobre = ({ abrir, openInvitation, hide, openModal }) => {
   return (
     <>
       <div
-        className={`bg-dark-black d-flex justify-content-center align-items-center  ${
+        className={`bg-sobre d-flex justify-content-center align-items-center  ${
           !openInvitation && "test-className"
-        } ${openModal && "overflow-hide"}`}
+        } ${openModal && "overflow-hidden"}`}
         id="parent-div"
       >
         <div id="hoja-principal" className={`sobre ${!hide && "hide"}`}>
@@ -17,7 +17,7 @@ const Sobre = ({ abrir, openInvitation, hide, openModal }) => {
             loading="lazy"
             id="sobre-arriba"
             src={sobreArriba}
-            className={`animate__animated p-0 m-0 z-index-3 ${
+            className={`animate__animated p-0 m-0 sobre-arriba ${
               openInvitation && "animate__fadeOutUp"
             }`}
             alt="sobre-arriba"
@@ -25,7 +25,7 @@ const Sobre = ({ abrir, openInvitation, hide, openModal }) => {
           <img
             id="sobre-abajo"
             loading="lazy"
-            className={`p-0 m-0 z-index-2 animate__animated ${
+            className={`p-0 m-0 sobre-abajo animate__animated ${
               openInvitation && "animate__slideOutDown"
             }`}
             src={sobreAbajo}

@@ -8,11 +8,11 @@ const PhotoSection = () => {
     <>
       <section className="window-back">
         <div
-          className="window d-flex justify-content-center align-items-center"
+          className="h-100 d-flex justify-content-center align-items-center"
           data-aos="fade-up"
           data-aos-duration="3000"
         >
-          <p className="p-4 rounded bg-white text-center w-90 display-5 font-paris font-weight-light">
+          <p className="p-4 rounded bg-white text-center w-75 display-5 font-paris font-weight-light">
             ¡Dios ha sido fiel hasta el día de hoy!
           </p>
         </div>
