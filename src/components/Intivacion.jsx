@@ -227,6 +227,13 @@ const Intivacion = () => {
   }, []);
 
   useEffect(() => {
+    if (openInvitation) {
+      setTimeout(() => {
+        AOS.init({ duration: 1000, once: true });
+      },4000);
+    }
+  }, [openInvitation]);
+  useEffect(() => {
     const countDownDateAsistence = new Date("Oct 15, 2025 09:31").getTime();
 
     const countdownAsistence = () => {
@@ -245,8 +252,8 @@ const Intivacion = () => {
   }, []);
 
   return (
-    <div className={` w-100 ${!openInvitation && "h-100 overflow-hidden"}`}>
-      {/* Sobre */}
+<div className={`w-100 ${!openInvitation ? " overflow-hidden" : ""}`}>
+{/* Sobre */}
       <Sobre
         abrir={abrir}
         openInvitation={openInvitation}

@@ -1,7 +1,5 @@
 import React from "react";
-import decoration from "../../assets/img/Untitled design (3).png";
-import lineaAlReves from "../../assets/img/lineaalreves.png";
-import fotoCuadro from "../../assets/img/pexels-barbara-ribeiro-8506039.jpg";
+import fotoCuadro from "../../assets/img/bg-wedding.png";
 
 const PhotoSection = () => {
   return (

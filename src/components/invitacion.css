@@ -716,7 +716,7 @@ td {
     font-size: 5.5rem;
   }
   .dress-code-img {
-    width: 30%;
+    width: 30% !important;
   }
   .btn-download-pdf-guest, .btn-save-guest {
     max-width: 200px;
