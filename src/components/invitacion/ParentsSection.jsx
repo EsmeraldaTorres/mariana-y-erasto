@@ -1,60 +1,59 @@
 import React from "react";
 import line2 from "../../assets/img/line2.png";
+import { useGuest } from "../../Context/GuestContext";
+
+const brideParents = ["Rogelio Macías Ruiz", "Andrea Lerma Gonzalez"];
+const groomParents = ["Antonio Juárez Mota", "Leticia Ortiz Villareal"];
 
 const ParentsSection = () => {
+  const { eventData } = useGuest();
   return (
-    <>
-      <section className="p-4">
-        <p
-          className="text-center title2 font-paris"
-          data-aos="fade-right"
-          data-aos-duration="2000"
-        >
-          Agradecemos a nuestros padres
-        </p>
-        <div className="d-flex justify-content-around align-items-center">
-          <img loading="lazy" className="decoration" src={line2} alt="linea" />
-        </div>
-        <div className="d-flex justify-content-center">
-          <div className="row">
-            <div className="col-12 col-md-6 mt-4">
+    <section className="p-4">
+      <p
+        className="text-center title2 font-paris"
+        data-aos="fade-right"
+        data-aos-duration="2000"
+      >
+        Agradecemos a nuestros padres
+      </p>
+
+      <div className="d-flex justify-content-around align-items-center">
+        <img loading="lazy" className="decoration" src={line2} alt="línea" />
+      </div>
+
+      <div className="d-flex justify-content-center">
+        <div className="row">
+          {/* Padres de la novia */}
+          <div className="col-12 col-md-6 mt-4">
+            {brideParents.map((name, index) => (
               <p
+                key={index}
                 className="text-center font-gold display-6"
                 data-aos="flip-down"
                 data-aos-duration="1500"
               >
-                Rogelio Macías Ruiz
+                {name}
               </p>
+            ))}
+          </div>
+
+          {/* Padres del novio */}
+          <div className="col-12 col-md-6 mt-4">
+            {groomParents.map((name, index) => (
               <p
-                className="text-center font-gold display-6"
-                data-aos="flip-down"
-                data-aos-duration="1500"
-              >
-                Andrea Lerma Gonzalez
-              </p>
-            </div>
-            <div className="col-12 col-md-6 mt-4">
-              <p
+                key={index}
                 className="text-center display-6"
                 data-aos="flip-down"
                 data-aos-duration="1500"
                 data-aos-delay="500"
               >
-                Antonio Juárez Mota
+                {name}
               </p>
-              <p
-                className="text-center display-6"
-                data-aos="flip-down"
-                data-aos-duration="1500"
-                data-aos-delay="500"
-              >
-                Leticia Ortiz Villareal
-              </p>
-            </div>
+            ))}
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

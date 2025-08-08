@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { db } from "../firebase";
 import { collection, setDoc, doc } from "firebase/firestore";
+import { useGuest } from "../Context/GuestContext";
 
 const InviteForm = () => {
+  const { eventData } = useGuest();
   const [formData, setFormData] = useState({
     id: "",
     code: "",
@@ -72,7 +74,7 @@ const InviteForm = () => {
       const docRef = doc(db, "people", formData.id);
       await setDoc(docRef, {
         ...formData,
-        qrUrl: `pases-boda-arturo-y-noemi/${formData?.id}/${formData?.principalName}/${formData?.code}`,
+        qrUrl: `pases-boda-${eventData.groom}-y-${eventData.bride}/${formData?.id}/${formData?.principalName}/${formData?.code}`,
       });
       setFormData({
         id: "",
@@ -115,17 +117,6 @@ const InviteForm = () => {
         placeholder="Principal Name"
         required
       />
-      {/* <div className="w-100">
-        <select
-          onChange={(e) => handleChange(e.target.value)}
-          name="etiqueta"
-          id="etiqueta"
-        >
-          <option value="novio">novio</option>
-          <option value="novia">novia</option>
-        </select>
-      </div> */}
-
       <h4>Acompanist</h4>
       {formData.acompanist.map((acomp, index) => (
         <div key={index}>

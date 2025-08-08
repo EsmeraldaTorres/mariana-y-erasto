@@ -2,24 +2,20 @@ import React from "react";
 import logoLiverpool from "../../assets/img/LIVERPOOL-logo.png";
 import decoration from "../../assets/img/Untitled design (3).png";
 import lineaAlReves from "../../assets/img/lineaalreves.png";
+import { useGuest } from "../../Context/GuestContext";
 
 const GiftSection = () => {
+  const { eventData } = useGuest();
+
   return (
     <>
       <section className="p-4" data-aos="zoom-in" data-aos-duration="2000">
-        <div className="py-4 d-flex justify-content-center align-items-center">
-          <img loading="lazy" className="line" src={lineaAlReves} alt="linea" />
-        </div>
-        <div className="py-4 d-flex justify-content-center">
-          <p className="w-75 text-center lead">
-            ¡Que nos acompañes es lo más importante! Y sí está en tu disposición
-            realizar una muestra de cariño estaremos muy agradecidos
-          </p>
-        </div>
-        <div className="pb-4 d-flex justify-content-center align-items-center">
-          <img loading="lazy" className="line" src={decoration} alt="linea" />
-        </div>
+        <DecorativeLine img={lineaAlReves} />
+        <TextBlock text="¡Que nos acompañes es lo más importante! Y si está en tu disposición realizar una muestra de cariño, estaremos muy agradecidos" />
+        <DecorativeLine img={decoration} />
       </section>
+
+      {/* Mesa de regalos */}
       <section className="window-regalos d-flex justify-content-center align-items-center">
         <div className="w-75 d-flex justify-content-center">
           <div
@@ -27,72 +23,96 @@ const GiftSection = () => {
             data-aos="fade-up"
             data-aos-duration="3000"
           >
-            <p className="display-4 text-center pt-4 font-paris">
+            <h2 className="display-4 text-center pt-4 font-paris">
               Mesa de Regalos
-            </p>
-            <div className="d-flex justify-content-center">
-              <hr className="text-center" />
-            </div>
+            </h2>
+            <Divider />
             <div className="row d-flex justify-content-around align-items-center">
-              <div className="col-md-6">
-                <div className="d-flex pt-4 justify-content-center align-items-center">
+              <GiftOption
+                icon={
                   <img
                     loading="lazy"
                     className="logo-liverpool"
                     src={logoLiverpool}
-                    alt="logo"
+                    alt="logo Liverpool"
                   />
-                </div>
-                <div className="d-flex justify-content-center">
-                  <a
-                    href="https://www.liverpool.com.mx/tienda/home"
-                    className="w-75 d-flex justify-content-center"
-                  >
-                    <button className="btn btn-light display-6 text-center my-3 p-2">
-                      Ir a mesa de regalos
-                      <i className="bi bi-box-arrow-up-right"></i>
-                    </button>
-                  </a>
-                </div>
-              </div>
-              <div className="col-md-6">
-                <div className="pt-4 d-flex justify-content-center">
-                  <i className="bi bi-envelope icon-sobre"></i>
-                </div>
-                <div className="d-flex justify-content-center">
-                  <p className="w-75 text-center display-6 text-shadow">
-                    Sobre con dinero en efectivo
-                  </p>
-                </div>
-              </div>
+                }
+                link="https://www.liverpool.com.mx/tienda/home"
+                buttonText="Ir a mesa de regalos"
+              />
+              <GiftOption
+                icon={<i className="bi bi-envelope icon-sobre"></i>}
+                text="Sobre con dinero en efectivo"
+              />
             </div>
           </div>
         </div>
       </section>
+
+      {/* Transferencia bancaria */}
       <section className="d-flex justify-content-center align-items-center">
         <div className="w-75 py-4 text-center mt-4">
-          <p className="display-6" data-aos="flip-up" data-aos-duration="2000">
-            ¡Gracias por tus muestras de cariño!
-          </p>
-          <div>
-            <p
-              className="display-6"
-              data-aos="flip-up"
-              data-aos-duration="2000"
-            >
-              Si así lo prefieres, también puedes hacer transferencia
-            </p>
-            <div className="d-flex justify-content-center">
-              <hr />
-            </div>
-            <p className="display-number">4027 6653 0576 7718</p>
-            <p>Arturo Jiménez Díaz</p>
-            <p>BBVA</p>
-          </div>
+          <TransferLine text="¡Gracias por tus muestras de cariño!" />
+          <TransferLine text="Si así lo prefieres, también puedes hacer transferencia" />
+          <Divider />
+          <p className="display-number">4027 6653 0576 7718</p>
+          <p>Arturo Jiménez Díaz</p>
+          <p>BBVA</p>
         </div>
       </section>
     </>
   );
 };
+
+// Subcomponentes reutilizables
+const DecorativeLine = ({ img }) => (
+  <div className="py-4 d-flex justify-content-center align-items-center">
+    <img loading="lazy" className="line" src={img} alt="línea decorativa" />
+  </div>
+);
+
+const TextBlock = ({ text }) => (
+  <div className="py-4 d-flex justify-content-center">
+    <p className="w-75 text-center lead">{text}</p>
+  </div>
+);
+
+const Divider = () => (
+  <div className="d-flex justify-content-center">
+    <hr className="text-center" />
+  </div>
+);
+
+const GiftOption = ({ icon, link, buttonText, text }) => (
+  <div className="col-md-6">
+    <div className="pt-4 d-flex justify-content-center align-items-center">
+      {icon}
+    </div>
+    {link ? (
+      <div className="d-flex justify-content-center">
+        <a
+          href={link}
+          className="w-75 d-flex justify-content-center"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button className="btn btn-light display-6 text-center my-3 p-2">
+            {buttonText} <i className="bi bi-box-arrow-up-right"></i>
+          </button>
+        </a>
+      </div>
+    ) : (
+      <div className="d-flex justify-content-center">
+        <p className="w-75 text-center display-6 text-shadow">{text}</p>
+      </div>
+    )}
+  </div>
+);
+
+const TransferLine = ({ text }) => (
+  <p className="display-6" data-aos="flip-up" data-aos-duration="2000">
+    {text}
+  </p>
+);
 
 export default GiftSection;

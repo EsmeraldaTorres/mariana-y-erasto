@@ -2,6 +2,8 @@ import React from "react";
 import fotoCuadro from "../../assets/img/bg-wedding.png";
 
 const PhotoSection = () => {
+  const { eventData } = useGuest();
+
   return (
     <>
       <section className="window-back">

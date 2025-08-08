@@ -1,10 +1,10 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import hotelGamaImg from "../../assets/img/gamma-xalapa-hotel.png";
-import hotelInnImg from "../../assets/img/holiday-inn-hotel.png";
-import granHotelImg from "../../assets/img/gran-hotel-xalpa-hotel.png";
+import { useGuest } from "../../Context/GuestContext";
 
 const HotelSection = () => {
+  const { eventData } = useGuest();
+
   return (
     <section className="p-4 bg-white">
       <div className="w-100">
@@ -16,10 +16,11 @@ const HotelSection = () => {
           Recomendación de hospedaje
         </p>
       </div>
+
       <Carousel variant="dark" className="d-flex justify-content-center">
-        <Carousel.Item>
-          <div className="d-flex p-3 justify-content-center align-items-center">
-            <div>
+        {eventData.hotels.map((hotel, index) => (
+          <Carousel.Item key={index}>
+            <div className="d-flex p-3 justify-content-center align-items-center">
               <div className="d-flex justify-content-center align-items-center flex-column">
                 <h2
                   data-aos="zoom-in-up"
@@ -27,7 +28,7 @@ const HotelSection = () => {
                   data-aos-duration="1500"
                   className="f-w-700 pr-4 pl-4 mb-4 display-5 title2 text-center font-paris"
                 >
-                  Gran Hotel Xalapa
+                  {hotel.name}
                 </h2>
                 <div className="d-flex justify-content-center align-items-center">
                   <img
@@ -35,41 +36,36 @@ const HotelSection = () => {
                     data-aos-easing="linear"
                     data-aos-duration="1500"
                     className="img-ubicaciones"
-                    src={granHotelImg}
-                    alt="iglesia"
+                    src={hotel.img}
+                    alt={`imagen de ${hotel.name}`}
                   />
                 </div>
-
                 <p
                   data-aos="fade-down"
                   data-aos-easing="linear"
                   data-aos-duration="1500"
-                  className="mt-2 font-paris display-5 pl-2 pr-2 text-center
-                    "
+                  className="mt-2 font-paris display-5 pl-2 pr-2 text-center"
                 >
-                  {" "}
-                  <i className="bi bi-car-front-fill "></i> A 40 min de la
-                  fiesta
+                  <i className="bi bi-car-front-fill"></i> {hotel.time}
                 </p>
                 <p
                   data-aos="zoom-in-up"
                   data-aos-easing="linear"
                   data-aos-duration="1500"
-                  className="text-infor font-aleo  text-center mr-4 ml-4"
+                  className="text-infor font-aleo text-center mr-4 ml-4"
                 >
-                  Guadalupe Victoria 163, Zona Centro, Centro, 91000
-                  Xalapa-Enríquez, Ver.{" "}
+                  {hotel.address}
                 </p>
-
                 <div className="d-flex align-items-center py-4 justify-content-center">
                   <a
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="text-white"
-                    href="https://maps.app.goo.gl/3yXfaZVray72iGWv5"
+                    href={hotel.link}
                   >
                     <button className="animate__pulse animate__animated animate__infinite btn btn-ver-mapa display-6 py-3 d-flex align-items-center">
                       <i className="bi bi-geo-alt font-gold"></i>
-                      <span className="d-flex display-5  font-paris font-gold align-items-center justify-content-center p-0 m-0">
+                      <span className="d-flex display-5 font-paris font-gold align-items-center justify-content-center p-0 m-0">
                         Ver más detalles
                       </span>
                     </button>
@@ -77,131 +73,8 @@ const HotelSection = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div className="d-flex p-3 justify-content-center align-items-center">
-            <div>
-              <div className="d-flex justify-content-center align-items-center flex-column">
-                <h2
-                  data-aos="zoom-in-up"
-                  data-aos-easing="linear"
-                  data-aos-duration="1500"
-                  className="f-w-700  pr-4 pl-4 mb-4 display-5 title2 text-center font-paris"
-                >
-                  Holiday Inn Express Xalapa
-                </h2>
-                <div className="d-flex justify-content-center align-items-center">
-                  <img
-                    data-aos="fade-down"
-                    data-aos-easing="linear"
-                    data-aos-duration="1500"
-                    className="img-ubicaciones"
-                    src={hotelInnImg}
-                    alt="iglesia"
-                  />
-                </div>
-
-                <p
-                  data-aos="fade-down"
-                  data-aos-easing="linear"
-                  data-aos-duration="1500"
-                  className=" mt-2 font-paris display-5 pl-2 pr-2 text-center
-                    "
-                >
-                  {" "}
-                  <i className="bi bi-car-front-fill "></i> A 40 min de la
-                  fiesta
-                </p>
-                <p
-                  data-aos="zoom-in-up"
-                  data-aos-easing="linear"
-                  data-aos-duration="1500"
-                  className="text-infor font-aleo  text-center mr-4 ml-4"
-                >
-                  Ignacio Zaragoza 8, Zona Centro, Centro, 91000
-                  Xalapa-Enríquez, Ver.
-                </p>
-
-                <div className="d-flex align-items-center py-4 justify-content-center">
-                  <a
-                    target="_blank"
-                    className="text-white"
-                    href="https://maps.app.goo.gl/wBtTrNBGZQTcYWhM9"
-                  >
-                    <button className="animate__pulse animate__animated animate__infinite btn btn-ver-mapa display-6 py-3 d-flex align-items-center">
-                      <i className="bi bi-geo-alt font-gold"></i>
-                      <span className="d-flex display-5  font-paris font-gold align-items-center justify-content-center p-0 m-0">
-                        Ver más detalles
-                      </span>
-                    </button>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div className="d-flex p-3 justify-content-center align-items-center">
-            <div>
-              <div className="d-flex justify-content-center align-items-center flex-column">
-                <h2
-                  data-aos="zoom-in-up"
-                  data-aos-easing="linear"
-                  data-aos-duration="1500"
-                  className="f-w-700 pr-4 pl-4 mb-4 display-5 title2 text-center font-paris"
-                >
-                  Gamma Xalapa Nubara
-                </h2>
-                <div className="d-flex justify-content-center align-items-center">
-                  <img
-                    data-aos="fade-down"
-                    data-aos-easing="linear"
-                    data-aos-duration="1500"
-                    className="img-ubicaciones"
-                    src={hotelGamaImg}
-                    alt="iglesia"
-                  />
-                </div>
-
-                <p
-                  data-aos="fade-down"
-                  data-aos-easing="linear"
-                  data-aos-duration="1500"
-                  className=" font-paris display-5 mt-2 pl-2 pr-2 text-center
-                    "
-                >
-                  <i className="bi bi-car-front-fill "></i> A 32 min de la
-                  fiesta
-                </p>
-                <p
-                  data-aos="zoom-in-up"
-                  data-aos-easing="linear"
-                  data-aos-duration="1500"
-                  className="text-infor font-aleo  text-center mr-4 ml-4"
-                >
-                  Av. Adolfo Ruiz Cortines 912 Col, U.H. del Bosque, 91017
-                  Xalapa-Enríquez, Ver.{" "}
-                </p>
-
-                <div className="d-flex align-items-center py-4 justify-content-center">
-                  <a
-                    target="_blank"
-                    className="text-white"
-                    href="https://maps.app.goo.gl/weUd2wWCdZnn8dG78"
-                  >
-                    <button className="animate__pulse animate__animated animate__infinite btn btn-ver-mapa display-6 py-3 d-flex align-items-center">
-                      <i className="bi bi-geo-alt font-gold"></i>
-                      <span className="d-flex display-5  font-paris font-gold align-items-center justify-content-center p-0 m-0">
-                        Ver más detalles
-                      </span>
-                    </button>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Carousel.Item>
+          </Carousel.Item>
+        ))}
       </Carousel>
     </section>
   );

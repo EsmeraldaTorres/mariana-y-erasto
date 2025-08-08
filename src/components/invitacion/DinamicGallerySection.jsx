@@ -1,6 +1,9 @@
 import React from "react";
-import lineDecoration from "../../assets/img/line2.png"
+import lineDecoration from "../../assets/img/line2.png";
+import { useGuest } from "../../Context/GuestContext";
 const DinamicGallerySection = () => {
+  const { eventData } = useGuest();
+
   return (
     <>
       <section className="position-relative">
@@ -24,11 +27,7 @@ const DinamicGallerySection = () => {
             en una misma galería!
           </h3>
           <div className="d-flex justify-content-around align-items-center">
-            <img
-              className="decoration  "
-              src={lineDecoration}
-              alt="linea"
-            />
+            <img className="decoration  " src={lineDecoration} alt="linea" />
           </div>
           <div className="p-3">
             <ol className="    text-left">
@@ -42,7 +41,7 @@ const DinamicGallerySection = () => {
                   <span>
                     {" "}
                     <a
-                      href="https://www.wedshoots.com/mx?albumId=MX883b4adb"
+                      href={`https://www.wedshoots.com/mx?albumId=${eventData.code}`}
                       className=" ml-2 font-gold d-flex align-items-center animate__animated animate__pulse animate__infinite"
                     >
                       Click aquí.
@@ -65,7 +64,7 @@ const DinamicGallerySection = () => {
                 {" "}
                 Introduce nuestro código{" "}
                 <span className="text-underline font-weight-bold font-gold">
-                  MX883b4adb
+                  {eventData.code}
                 </span>
               </li>
               <li data-aos="fade-down" data-aos-duration="3000">

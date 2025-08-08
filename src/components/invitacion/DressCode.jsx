@@ -1,8 +1,11 @@
 import React from "react";
-import dressCode from "../../assets/img/etiqueta rigurosa.png"
-import lineDecoration from "../../assets/img/lineaalreves.png"
+import dressCode from "../../assets/img/etiqueta rigurosa.png";
+import lineDecoration from "../../assets/img/lineaalreves.png";
+import { useGuest } from "../../Context/GuestContext";
 
 const DressCode = () => {
+  const { eventData } = useGuest();
+
   return (
     <>
       <section className="text-center h-100 p-4 padding-4 bg-vestimenta">
@@ -19,23 +22,19 @@ const DressCode = () => {
             data-aos-easing="linear"
             data-aos-duration="1500"
             className="w-75 img-vestimenta dress-code-img"
-            src={dressCode}
+            src={eventData?.dressCode?.img}
             alt="dress-code"
           />
         </div>
         <div className="d-flex justify-content-around align-items-center">
-          <img
-            className="decoration mt-4 "
-            src={lineDecoration}
-            alt="linea"
-          />
+          <img className="decoration mt-4 " src={lineDecoration} alt="linea" />
         </div>
         <p
           data-aos="zoom-in-up"
           data-aos-duration="1000"
           className="font-paris display-4 p-4 "
         >
-          formal
+          {eventData?.dressCode?.name}
         </p>
       </section>
     </>

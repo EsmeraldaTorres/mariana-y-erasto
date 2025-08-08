@@ -1,29 +1,26 @@
 import React from "react";
-import { CardImgOverlay } from "react-bootstrap";
 import Carousel from "react-bootstrap/Carousel";
+import { useGuest } from "../../Context/GuestContext";
+
+const photoClasses = [
+  "foto-1",
+  "foto-2",
+  "foto-3",
+  "foto-4",
+  "foto-5",
+  "foto-6",
+];
 
 const PhotoGallerySection = () => {
+  const { eventData } = useGuest();
   return (
     <div className="img-galery">
       <Carousel data-aos="fade-right" data-aos-duration="2000">
-        <Carousel.Item>
-          <div className="foto-1"></div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div className="foto-2"></div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div className="foto-3"></div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div className="foto-4"></div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div className="foto-5"></div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div className="foto-6"></div>
-        </Carousel.Item>
+        {photoClasses.map((photoClass, index) => (
+          <Carousel.Item key={index}>
+            <div className={photoClass}></div>
+          </Carousel.Item>
+        ))}
       </Carousel>
     </div>
   );

@@ -7,17 +7,17 @@
   display: none;
 }
 select {
-  outline: none; 
+  outline: none;
 }
 
 select:focus {
-  outline: none; 
-  box-shadow: none; 
+  outline: none;
+  box-shadow: none;
 }
 
 select:active {
   outline: none;
-  box-shadow: none; 
+  box-shadow: none;
 }
 a {
   text-decoration: none;
@@ -45,13 +45,13 @@ button:hover {
 .h-80 {
   height: 80vh;
 }
-.border-1{
+.border-1 {
   border: none;
   border-radius: 10px;
 }
 .w-90v {
   width: 90%;
- }
+}
 
 /* FONTS */
 h3 {
@@ -94,7 +94,6 @@ h3 {
 .f-w-700 {
   font-weight: 700;
 }
-
 
 /* BACKGROUDNS */
 .bg-gold {
@@ -139,7 +138,6 @@ hr {
   --animate-duration: 3s;
 }
 
-
 /* SOBRE */
 .sobre {
   height: 100vh;
@@ -161,7 +159,6 @@ hr {
   max-width: 100%;
   vertical-align: middle;
   border-style: none;
-
 }
 .sobre-arriba {
   position: absolute;
@@ -254,6 +251,10 @@ td {
 .invitacion {
   width: 100vw;
 }
+.text-gray {
+  color: rgb(150, 148, 148);
+}
+
 .home {
   height: 100vh;
   width: 100%;
@@ -263,7 +264,7 @@ td {
       rgba(5, 7, 12, 0.308),
       rgba(5, 7, 12, 0.335)
     ),
-    url("../assets/img/main.jpg");
+    url("../assets/img/foto-2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
@@ -272,7 +273,6 @@ td {
   width: 60%;
   padding-right: 0;
 }
-
 
 /* audio */
 .player-icon {
@@ -298,7 +298,14 @@ td {
   cursor: pointer;
 }
 
- /*SECOND SECTION */
+.portada-img {
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 2rem;
+}
+/*SECOND SECTION */
 .container-date {
   height: min-content;
   max-width: 100%;
@@ -329,7 +336,7 @@ td {
   justify-content: center;
   background-size: cover;
 }
-.container-date  .container3 {
+.container-date .container3 {
   background-color: rgb(255, 255, 255);
   height: min-content;
 }
@@ -355,31 +362,23 @@ td {
   background-position: top;
 }
 .foto-1 {
-  background-image:
-    url("../assets/img/foto-1.jpg");
+  background-image: url("../assets/img/foto-1.jpg");
 }
 .foto-2 {
-  background-image: 
-    url("../assets/img/foto-2.jpg");
+  background-image: url("../assets/img/foto-2.jpg");
 }
 .foto-3 {
-  background-image: 
-    url("../assets/img/foto-3.jpg");
+  background-image: url("../assets/img/foto-3.jpg");
 }
 .foto-4 {
-  background-image: 
-    url("../assets/img/foto-4.jpg");
+  background-image: url("../assets/img/foto-4.jpg");
 }
 .foto-5 {
-  background-image: 
-    url("../assets/img/foto-5.jpg");
+  background-image: url("../assets/img/foto-5.jpg");
 }
 .foto-6 {
-  background-image: 
-    url("../assets/img/foto-6.jpg");
+  background-image: url("../assets/img/foto-6.jpg");
 }
-
-
 
 /* MODAL INVITADOS */
 .modal-content {
@@ -495,8 +494,23 @@ td {
   font-size: 1.2rem;
   font-weight: 500;
 }
-.btn-download-pdf-guest, .btn-save-guest {
+.btn-download {
+  background-color: #b9ac87 !important;
+  color: white !important;
+}
+.btn-download-pdf-guest,
+.btn-save-guest {
   margin-right: 1rem;
+}
+.filter-container {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  background: #efefef;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .btn-descargar:hover {
   background-color: rgb(210, 210, 210);
@@ -510,7 +524,24 @@ td {
   border-radius: 7px;
 }
 .table-width {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
+}
+.table-container {
+  padding: 1rem;
+  width: 100%;
+  overflow-x: auto;
+}
+.guest-table {
+  width: 100%;
+  min-width: 600px; /* o más según lo necesites */
+  border-collapse: collapse;
+}
+
+.guest-table th,
+.guest-table td {
+  padding: 0.5rem;
+  text-align: left;
+  border: 1px solid #ccc;
 }
 .box-add-table {
   flex-direction: column;
@@ -521,7 +552,6 @@ td {
   display: flex;
   flex-direction: column;
 }
-
 
 /* itinerario */
 .itinerario {
@@ -545,11 +575,10 @@ td {
 }
 
 .icon-img {
-    height: 100px;
-    width: 30% !important;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-  
+  height: 100px;
+  width: 30% !important;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .owl-nav {
   color: rgba(27, 27, 26, 0.575);
@@ -572,7 +601,21 @@ td {
   width: 160px;
   padding-bottom: 1rem;
 }
-
+.second-section .container2 {
+  background-image: linear-gradient(
+      rgba(5, 7, 12, 0.493),
+      rgba(5, 7, 12, 0.335)
+    ),
+    url("../assets/img/foto-7.jpg");
+  height: 60vh;
+  width: auto;
+  background-color: rgba(0, 0, 0, 0.575);
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+}
 /* ubicación */
 .ubicacion {
   height: min-content;
@@ -627,7 +670,10 @@ td {
   border: solid 2px whitesmoke;
   border-radius: 5px;
 }
-
+tr {
+  border-color: #eeeeee;
+  border-style: solid;
+}
 /* regalos */
 .card-regalos {
   margin: 2rem 0;
@@ -655,7 +701,7 @@ td {
 .marca {
   color: #dbdbdb;
 }
-.last-window{
+.last-window {
   height: 100vh;
   max-width: 100%;
   background-image: url("../assets/img/pexels-olya-kobruseva-4630032.jpg");
@@ -677,8 +723,6 @@ td {
   background-position: center;
   z-index: 9;
 }
-
-
 
 @media (min-width: 470px) {
   .title-principal {
@@ -702,7 +746,7 @@ td {
   .logo-liverpool {
     width: 200px;
   }
-  
+
   .display-2 {
     font-size: 3.5rem;
   }
@@ -718,7 +762,8 @@ td {
   .dress-code-img {
     width: 30% !important;
   }
-  .btn-download-pdf-guest, .btn-save-guest {
+  .btn-download-pdf-guest,
+  .btn-save-guest {
     max-width: 200px;
   }
 
@@ -726,8 +771,8 @@ td {
     font-size: 3.6rem;
   }
   .table-width {
-    font-size: 1.1rem;
-    width: 100%;
+    font-size: 1.3rem;
+    width: 80%;
   }
   .cuenta-regresiva {
     font-size: 1.3rem;
@@ -758,7 +803,7 @@ td {
     width: 250px;
     margin-bottom: 2rem;
   }
- 
+
   .label-and-select {
     width: 100%;
     display: block;
@@ -770,7 +815,26 @@ td {
     font-size: 1.4rem;
   }
 }
+@media (min-width: 970px) {
+  .table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .desktop-none {
+    display: none;
+  }
+  .d-flex-desktop {
+    display: flex;
+    justify-content: center;
+  }
+}
 @media (min-width: 1020px) {
+  .filter-container {
+    flex-direction: row;
+    padding-bottom: 1rem;
+  }
+
   .name {
     width: 70%;
     padding-right: 0 !important;
@@ -778,7 +842,11 @@ td {
   .box-add-table {
     flex-direction: row;
   }
-  .sobre-arriba{
+  .btn-download-pdf-guest {
+    width: 25%;
+  }
+
+  .sobre-arriba {
     bottom: 30;
     top: 0;
     height: 70vh;

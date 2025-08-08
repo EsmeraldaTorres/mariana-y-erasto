@@ -13,7 +13,9 @@
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
+    "file-saver": "^2.0.5",
     "firebase": "^9.23.0",
+    "framer-motion": "^12.23.12",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
@@ -26,7 +28,8 @@
     "react-owl-carousel": "^2.3.3",
     "react-router-dom": "^6.23.1",
     "swiper": "^11.1.4",
-    "vite": "^4.0.0"
+    "vite": "^4.0.0",
+    "xlsx": "^0.18.5"
   },
   "author": "Esmeralda Torres Aguirre",
   "license": "ISC"

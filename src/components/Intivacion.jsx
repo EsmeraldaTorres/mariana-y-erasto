@@ -13,12 +13,13 @@ import PhotoSection from "./invitacion/PhotoSection";
 import Sobre from "./invitacion/Sobre";
 import LastPage from "./invitacion/LastPage";
 import QRCode from "qrcode.react";
-import AddToMobileCalendar from "./invitacion/AddToMobileCalendar";
-import AddToGoogleCalendar from "./invitacion/AddToGoogleCalendar";
+import AddToCalendar from "./invitacion/AddToCalendar";
 import jsPDF from "jspdf";
 
 import { useState, useRef } from "react";
-import decoration from "../assets/img/Untitled design (3).png";
+import decoration from "../assets/img/line2.png";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 // Styles
 import "animate.css";
@@ -40,6 +41,7 @@ const Intivacion = () => {
   const audioRef = useRef(null);
   const {
     guest,
+    eventData,
     setGuest,
     fetchDataByGuest,
     reservationDone,
@@ -55,8 +57,8 @@ const Intivacion = () => {
   const [reservationDeny, setReservationDeny] = useState(false);
   const [ticketsConfirmados, setTicketsConfirmados] = useState();
   const [confirmAsistence, setConfirmAsistence] = useState(false);
-  const [cancelAsistence, setCancelAsistence] = useState(false);
   const [continuar, setContinuar] = useState(false);
+  const [loadingPdf, setLoadingPdf] = useState(false);
 
   const printRef = useRef();
 
@@ -69,8 +71,7 @@ const Intivacion = () => {
   });
 
   const [text, setText] = useState({
-    firstText:
-      " Por favor confirma tu asistencia al evento antes del 15 de Octubre, después de esta fecha la confirmación no podrá realizarse.",
+    firstText: ` Por favor confirma tu asistencia al evento antes del ${eventData.limitConfirmation}, después de esta fecha la confirmación no podrá realizarse.`,
     secondText:
       "En caso de que no puedan asistir, por favor, también háznoslo saber.",
     thirdText:
@@ -103,17 +104,38 @@ const Intivacion = () => {
     setGuest({ ...guest, acompanist: updatedAccompanist });
   };
 
-  const handleContinuar = (e) => {
-    e.preventDefault();
-    console.log("hola");
+  const handleSubmit = async (event, boolean) => {
+    event.preventDefault();
+    let invitados;
+
+    if (boolean) {
+      const denyAsistence = guest?.acompanist.map((person) => ({
+        ...person,
+        asist: false,
+      }));
+
+      invitados = { ...guest, acompanist: denyAsistence };
+    }
+
+    // Guardar los datos actualizados en Firestore
     setLoading(true);
-    setContinuar(true);
-    setConfirmAsistence(false);
-    setTimeout(() => {
-      setLoading(false);
-      setContinuar(false);
-      setReservationDone(true);
-    }, 4000);
+    const guestDoc = doc(db, "people", id);
+    await updateDoc(guestDoc, boolean ? invitados : guest)
+      .then(() => {
+        if (boolean) {
+          setOpenModal(true);
+          setReservationDone(true);
+          setReservationDeny(true);
+          setLoading(false);
+        } else
+          setTimeout(() => {
+            setLoading(false);
+            setReservationDone(true);
+          }, 4000);
+      })
+      .catch((error) => {
+        console.error("Error actualizando los datos: ", error);
+      });
   };
 
   useEffect(() => {
@@ -130,6 +152,8 @@ const Intivacion = () => {
   const qrRef = useRef(null);
 
   const handleDownloadPdf = async () => {
+    setLoadingPdf(true);
+
     const pdf = new jsPDF({
       orientation: "portrait",
       unit: "pt",
@@ -139,8 +163,7 @@ const Intivacion = () => {
     const pdfWidth = pdf.internal.pageSize.getWidth();
     const pdfHeight = pdf.internal.pageSize.getHeight();
 
-    const backgroundImageUrl =
-      "https://images.pexels.com/photos/27060172/pexels-photo-27060172/free-photo-of-blanco-y-negro-naturaleza-pareja-amor.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+    const backgroundImageUrl = "../../2.jpg";
     const backgroundImage = new Image();
     backgroundImage.src = backgroundImageUrl;
 
@@ -149,7 +172,7 @@ const Intivacion = () => {
 
       pdf.setFontSize(24);
       pdf.setTextColor(255, 255, 255); // Color blanco para el texto
-      pdf.text("Tickets Boda Arturo y Noemí", pdfWidth / 2, 100, {
+      pdf.text("Tickets Boda Gaby y Angel", pdfWidth / 2, 100, {
         align: "center",
       });
 
@@ -158,7 +181,8 @@ const Intivacion = () => {
         const qrImageData = qrCanvas.toDataURL("image/png");
         pdf.addImage(qrImageData, "PNG", pdfWidth / 2 - 50, 120, 100, 100);
       }
-      pdf.save("tickets_boda_arturo_noemi.pdf");
+      pdf.save("tickets_boda_gaby_y_angel.pdf");
+      setLoadingPdf(false);
     };
   };
   useEffect(() => {
@@ -193,12 +217,20 @@ const Intivacion = () => {
   }, [guest]);
 
   useEffect(() => {
+    if (openInvitation) {
+      setTimeout(() => {
+        AOS.init({ duration: 1000, once: true });
+      }, 4000);
+    }
+  }, [openInvitation]);
+
+  useEffect(() => {
     AOS.init();
 
     if (id) {
       fetchDataByGuest(id, code);
     }
-    const countDownDate = new Date("Dec 26, 2025 09:30").getTime();
+    const countDownDate = new Date("Jul 05, 2026 00:00").getTime();
     const updateCountdown = () => {
       const now = new Date().getTime();
       const distance = countDownDate - now;
@@ -227,14 +259,7 @@ const Intivacion = () => {
   }, []);
 
   useEffect(() => {
-    if (openInvitation) {
-      setTimeout(() => {
-        AOS.init({ duration: 1000, once: true });
-      },4000);
-    }
-  }, [openInvitation]);
-  useEffect(() => {
-    const countDownDateAsistence = new Date("Oct 15, 2025 09:31").getTime();
+    const countDownDateAsistence = new Date("Jun 26, 2026 00:00").getTime();
 
     const countdownAsistence = () => {
       const now = new Date().getTime();
@@ -252,8 +277,8 @@ const Intivacion = () => {
   }, []);
 
   return (
-<div className={`w-100 ${!openInvitation ? " overflow-hidden" : ""}`}>
-{/* Sobre */}
+    <div className={`w-100 ${!openInvitation ? " overflow-hidden" : ""}`}>
+      {/* Sobre */}
       <Sobre
         abrir={abrir}
         openInvitation={openInvitation}
@@ -266,13 +291,16 @@ const Intivacion = () => {
           isPlaying={isPlaying}
           togglePlayPause={togglePlayPause}
           audioRef={audioRef}
+          hide={hide}
         />
         <SecondPage timeLeft={timeLeft} />
         <section className="ribbon">
-          <p className="m-0 display-6">El inicio de la familia Juárez Macías</p>
+          <p className="m-0 display-6">
+            El inicio de la familia Andueza Collins
+          </p>
         </section>
         <ParentsSection />
-        <section className="container3 bg-gold p-4 m-0">
+        <section className=" bg-gold p-4 m-0">
           <div className="d-flex justify-content-center">
             <p className="w-75 text-center text-white display-6 m-0 p-2">
               Compartir estos momentos con ustedes, los hace inolvidables.
@@ -280,13 +308,6 @@ const Intivacion = () => {
           </div>
         </section>
         <GodparentsSection />
-        <section className="container3 bg-gold p-4 m-0">
-          <div className="d-flex justify-content-center">
-            <p className="w-50 text-center text-white m-0 p-2 display-6">
-              ¡Nos gustaría mucho que nos acompañaras!
-            </p>
-          </div>
-        </section>
         <Itinerary />
         <Location />
         <PhotoSection />
@@ -298,28 +319,30 @@ const Intivacion = () => {
         </section>
         <HotelSection />
 
-        <section className="ribbon bg-gold p-4">
-          <p className="text-white text-center display-6">
-            Este día será muy especial y que asistas ¡lo hará aún más!
-          </p>
+        <section className=" bg-gold p-4 m-0">
+          <div className="d-flex justify-content-center">
+            <p className="w-50 text-center text-white m-0 p-2 display-6">
+              ¡Nos gustaría mucho que nos acompañaras!
+            </p>
+          </div>
         </section>
         <DinamicGallerySection />
         <section className="bg-gray p-3">
           <p className="text-center p-0 m-0">
-            <i className="bi bi-hearts"></i>Respetuosamente NO NIÑOS
+            {/* <i className="bi bi-hearts"></i>Respetuosamente NO NIÑOS */}
           </p>
         </section>
         <DressCode />
         <PhotoGallerySection />
-        <section className="ribbon bg-gold p-4">
+        <section className="ribbo bg-gold p-4">
           <p className="text-white text-center display-6">
             Este día es muy especial y que vayas ¡lo hace aún más!
           </p>
         </section>
         <section className="text-center p-4 lead overflow-hidden">
-        <h3
+          <h3
             className="font-paris principal-name-guest "
-           data-aos="zoom-in"
+            data-aos="zoom-in"
             data-aos-duration="2000"
           >
             {guest?.principalName}
@@ -339,16 +362,17 @@ const Intivacion = () => {
               <p
                 key={key}
                 className="mb-0 display-6"
-                data-aos="zoom-in"                data-aos-duration="1000"
+                data-aos="zoom-in"
+                data-aos-duration="1000"
               >
-             {key + 1}.-   {person.name}
+                {key + 1}.- {person.name}
               </p>
             ))}
           </div>
 
           {text.firstText != "" && (
             <p
-              className="display-4 mt-4"
+              className="display-4 mt-4 font-paris"
               data-aos="zoom-in"
               data-aos-duration="2000"
             >
@@ -397,7 +421,7 @@ const Intivacion = () => {
             </div>
           </div>
           <div className="d-flex flex-column overflow-hidden">
-            {reservationDone ? (
+            {reservationDone && reservationDeny === false ? (
               <>
                 <div className="d-flex justify-content-center">
                   <button
@@ -410,12 +434,12 @@ const Intivacion = () => {
                   </button>
                 </div>
               </>
-            ) : reservationDeny ? (
+            ) : reservationDone && reservationDeny ? (
               <div className="overflow-hidden">
-                <p data-aos="fade-right" data-aos-duration="2000">
+                <p data-aos="zoom-in" data-aos-duration="2000">
                   Haz confirmado que no podrás acompañarnos
                 </p>
-                <p data-aos="fade-left" data-aos-duration="2000">
+                <p data-aos="zoom-in" data-aos-duration="2000">
                   Gracias por darnos tu respuesta
                 </p>
               </div>
@@ -426,7 +450,6 @@ const Intivacion = () => {
                     className="mb-3 btn-save "
                     onClick={() => {
                       setOpenModal(true);
-                      setConfirmAsistence(true);
                     }}
                   >
                     <p className="animate__animated animate__pulse animate__infinite mb-0">
@@ -434,11 +457,10 @@ const Intivacion = () => {
                     </p>
                   </button>
                 </div>
-                <div className="d-flex justify-content-center">
+                <div className="d-flex justify-content-center pb-4">
                   <button
                     onClick={(event) => {
-                      setOpenModal(true);
-                      setCancelAsistence(true);
+                      handleSubmit(event, true);
                     }}
                     className="text-white btn-no-asistir"
                   >
@@ -448,15 +470,14 @@ const Intivacion = () => {
                       : "No podremos asistir "}
                   </button>
                 </div>
-
               </>
             ) : (
               text.firstText === "" && (
                 <div>
-                  <p data-aos="zoom-out" data-aos-duration="2000">
+                  <p data-aos="zoom-in" data-aos-duration="2000">
                     El tiempo de confirmación de asistencia ha pasado.
                   </p>
-                  <p data-aos="zoom-out" data-aos-duration="2000">
+                  <p data-aos="zoom-in" data-aos-duration="2000">
                     Tus pases han sido cancelados.
                   </p>
                 </div>
@@ -478,28 +499,32 @@ const Intivacion = () => {
                 >
                   <Modal.Body
                     className={`${
+                      id &&
                       reservationDone &&
                       reservationDeny === false &&
                       "p-1 w-90v"
                     }`}
                   >
                     <div className="d-flex flex-column justify-content-center align-items-center">
-                      {confirmAsistence ? (
+                      {reservationDeny === false ? (
                         <p className="font-paris display-3 text-center padding-4-rem pt-4 px-0">
                           ¡Gracias por darnos el sí!
                         </p>
                       ) : (
-                        cancelAsistence && (
-                          <p className="font-paris display-3 text-center mt-4">
-                            ¡Te extrañaremos!
-                          </p>
-                        )
+                        <p className="font-paris display-3 text-center mt-4">
+                          ¡Te extrañaremos!
+                        </p>
                       )}
-                      {continuar ? (
+                      {id && loading && reservationDeny === false ? (
                         <>
-                          <p>Tus pases se están generando</p>
+                          <p className="text-center">
+                            Tus pases se están generando
+                          </p>
                         </>
-                      ) : confirmAsistence ? (
+                      ) : id &&
+                        loading === false &&
+                        !reservationDone &&
+                        reservationDeny === false ? (
                         <div className="padding-4-rem text-center">
                           <p>
                             Por favor, marca una respuesta por cada invitado y
@@ -508,66 +533,60 @@ const Intivacion = () => {
                             puedas generar tu pase al evento .
                           </p>
                         </div>
-                      ) : reservationDone ? (
-                        <div>
-                          <div className="justify-content-center mt-4">
-                            <div className="text-center">
-                              <h2 className="font-paris font-gold mb-4 ">
-                                Tickets {guest?.principalName}
-                              </h2>
-                              <h3 className="mb-4 ">
-                                Favor de no escanear con ningún dispositivo
-                              </h3>
-                              <div ref={printRef}>
-                                <div
-                                  ref={qrRef}
-                                  className="d-flex justify-content-center mt-4 mb-4"
-                                >
-                                  <QRCode
-                                    value={
-                                      "https://arturo-y-noemi-nuestra-boda-muestra.netlify.app/" +
-                                      guest?.qrUrl
-                                    }
-                                  />
-                                </div>
-                                {guest?.acompanist?.map((acomp, index) => (
+                      ) : id && reservationDone && reservationDeny === false ? (
+                        <>
+                          <div className="w-100">
+                            <div className="justify-content-center mt-4">
+                              <div className="text-center">
+                                <h2 className="font-paris font-olive mb-4 font-gold ">
+                                  Tickets {guest?.principalName}
+                                </h2>
+                                <h3 className="mb-4 ">
+                                  Favor de no escanear con ningún dispositivo
+                                </h3>
+                                <div ref={printRef}>
                                   <div
-                                    key={index}
-                                    className="w-100 d-flex justify-content-center flex-column"
+                                    ref={qrRef}
+                                    className="d-flex justify-content-center mt-4 mb-4"
                                   >
-                                    <p className="mb-1 display-6 ">
-                                      {acomp.name}
-                                    </p>
+                                    <QRCode
+                                      value={eventData.url + guest?.qrUrl}
+                                      size={200}
+                                    />
                                   </div>
-                                ))}
+                                  {guest?.acompanist?.map(
+                                    (acomp, index) =>
+                                      acomp?.asist === true && (
+                                        <div
+                                          key={index}
+                                          className="w-100 d-flex justify-content-center flex-column"
+                                        >
+                                          <p className="mb-1 display-6 font-gold">
+                                            {acomp.name}
+                                          </p>
+                                        </div>
+                                      )
+                                  )}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                         <div className="mb-4 mt-4">
-                              <h3 className="font-gold text-center">
+                            <div className="mb-4 mt-4">
+                              <h3 className="font-olive text-center">
                                 Muestra tu CÓDIGO QR{" "}
                                 <span className="font-weigth-bold">solo</span> a
                                 los recepcionistas del evento para entrar al
                                 salón.
                               </h3>
-                              
                               <p className="display-6 text-center my-4 p-0">
                                 No compartas ésta invitación con nadie más ni
                                 tus códigos QR.
                               </p>
-                              <h1 className="text-center">Agendar Evento</h1>
-                              <div className="text-center d-flex flex-column">
-                                <AddToGoogleCalendar />
-                                <AddToMobileCalendar />
+                              <div className="text-center d-flex lead flex-column">
+                                Agenda nuestro evento en tus calendarios
+                                <AddToCalendar type="google" />
+                                <AddToCalendar type="mobile" />
                               </div>
-                              <div className="pb-4 d-flex justify-content-center align-items-center">
-                                <img
-                                  loading="lazy"
-                                  className="line"
-                                  src={decoration}
-                                  alt="linea"
-                                />
-                              </div>
+                              <div className="pb-4 d-flex justify-content-center align-items-center"></div>
                               <p className="lead text-center ">
                                 Puedes descargar tus tickets o tomar una captura
                                 de pantalla el día del evento para tenerlos a la
@@ -578,7 +597,9 @@ const Intivacion = () => {
                                 No escanees los códigos antes del evento, solo
                                 los recepcionistas del salón podrán hacerlo.
                               </p>
-                              {guest && ticketsConfirmados?.length != 0 && (
+                              {guest &&
+                              ticketsConfirmados?.length != 0 &&
+                              loadingPdf === false ? (
                                 <div className="w-100 justify-content-center d-flex align-items-center mb-4">
                                   <button
                                     className="btn-descargar btn-agendar text-dark"
@@ -587,6 +608,16 @@ const Intivacion = () => {
                                     Descargar Tickets{" "}
                                   </button>
                                 </div>
+                              ) : (
+                                guest &&
+                                ticketsConfirmados?.length != 0 &&
+                                loadingPdf === true && (
+                                  <div className="btn-descargar btn-agendar text-dark text-center">
+                                    <div className="spinner-grow" role="status">
+                                      <span className="sr-only"></span>
+                                    </div>
+                                  </div>
+                                )
                               )}
 
                               <p className="mt-4 text-center">
@@ -594,14 +625,14 @@ const Intivacion = () => {
                                 <Link
                                   className="font-gold"
                                   target="_blank"
-                                  to="https://digital-invite-by-esmeralda.vercel.app/"
+                                  to="https://digital-invite-by-esmeralda.netlify.app/"
                                 >
                                   Digital Invite by Esmeralda{" "}
                                 </Link>
                               </p>
                               <div className="w-100 d-flex flex-column justify-content-center align-items-center">
                                 Contacto
-                                <div className="d-flex justify-content-evenly w-75">
+                                <div className="d-flex justify-content-evenly w-80">
                                   <Link
                                     target="_blank"
                                     to="https://wa.me/524426147355?text=Hola%20Esmeralda!%20Me%20interesa%20contratar%20tu%20servicio. Necesito una invitación para (especifica tu evento)"
@@ -632,9 +663,10 @@ const Intivacion = () => {
                                 </div>
                               </div>
                             </div>
-                        </div>
+                          </div>
+                        </>
                       ) : (
-                        cancelAsistence && (
+                        reservationDeny && (
                           <div className="text-center">
                             <h3 className="text-center">
                               Lamentamos que no puedas acompañarnos en este
@@ -649,14 +681,22 @@ const Intivacion = () => {
                         )
                       )}
                     </div>
-                    {confirmAsistence ? (
+                    {id &&
+                    loading === false &&
+                    reservationDone === false &&
+                    reservationDeny === false ? (
                       <>
-                        <form className="d-flex flex-column align-items-center">
+                        <form
+                          className="d-flex flex-column align-items-center"
+                          onSubmit={(event) => {
+                            handleSubmit(event, false);
+                          }}
+                        >
                           {guest?.acompanist?.map((accomp, index) => (
                             <>
                               <p
                                 id={index}
-                                className="mb-0 font-paris display-5"
+                                className="mb-0 font-paris display-5 text-center"
                               >
                                 {accomp.name}
                               </p>
@@ -665,9 +705,11 @@ const Intivacion = () => {
                                   key={index}
                                   className="checkbox-wrapper-53"
                                 >
-                                  <label className="container">
+                                  <label className="container px-1 py-2">
                                     <div className="d-flex">
-                                      <p className="mb-0">sí asistiré</p>
+                                      <p className="mb-0 text-center">
+                                        sí asistiré
+                                      </p>
                                       <input
                                         id={index}
                                         type="checkbox"
@@ -684,9 +726,11 @@ const Intivacion = () => {
                                   key={index}
                                   className="checkbox-wrapper-53"
                                 >
-                                  <label className="container">
+                                  <label className="container px-1 py-2">
                                     <div className="d-flex">
-                                      <p className="mb-0">no podré asistir</p>
+                                      <p className="mb-0 text-center">
+                                        no podré asistir
+                                      </p>
                                       <input
                                         id={index}
                                         type="checkbox"
@@ -705,9 +749,6 @@ const Intivacion = () => {
                           <div className="d-flex flex-column">
                             <div className="d-flex justify-content-center w-100">
                               <button
-                                onClick={(e) => {
-                                  handleContinuar(e);
-                                }}
                                 disabled={disabledBtn}
                                 className={`${
                                   disabledBtn
@@ -736,13 +777,15 @@ const Intivacion = () => {
                           </div>
                         </div>
                       </>
-                    ) : loading ? (
+                    ) : id && loading ? (
                       <div className="d-flex justify-content-center align-items-center">
                         <div className="spinner-grow" role="status">
                           <span className="sr-only"></span>
                         </div>
                       </div>
-                    ) : (
+                    ) : id &&
+                      reservationDone === true &&
+                      reservationDeny === false ? (
                       <>
                         <div className="modal-foote mb-4 d-flex flex-column align-items-center justify-content-between">
                           <button
@@ -757,6 +800,26 @@ const Intivacion = () => {
                           </button>
                         </div>
                       </>
+                    ) : (
+                      id &&
+                      reservationDeny && (
+                        <>
+                          <div className="modal-foote align-items-center justify-content-center d-flex">
+                            <div className="d-flex justify-content-center mb-4">
+                              <button
+                                onClick={() => {
+                                  setOpenModal(false);
+                                }}
+                                type="button"
+                                className="btn-cerrar justify-content-center w-5 "
+                                data-bs-dismiss="modal"
+                              >
+                                Cerrar
+                              </button>
+                            </div>
+                          </div>
+                        </>
+                      )
                     )}
                   </Modal.Body>
                 </div>

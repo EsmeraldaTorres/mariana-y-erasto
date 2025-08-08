@@ -1,12 +1,17 @@
 import React from "react";
 import decoration from "../../assets/img/Untitled design (3).png";
 import lineaAlReves from "../../assets/img/lineaalreves.png";
+import { useGuest } from "../../Context/GuestContext";
+import useCountdown from "../hooks/useCountDown";
 
-const SecondPage = ({ timeLeft }) => {
+const SecondPage = ({}) => {
+  const { eventData } = useGuest();
+  const timeCountDown = useCountdown(eventData.countDown);
+
   return (
     <>
-      <section className="container-date">
-        <div className="container1 d-flex justify-content-center align-items-center">
+      <section className="second-section">
+        <div className="container d-flex justify-content-center align-items-center">
           <div className="col-10">
             <div data-aos="fade-down" data-aos-duration="2000">
               <div className="pb-4 d-flex justify-content-center align-items-center">
@@ -36,10 +41,12 @@ const SecondPage = ({ timeLeft }) => {
             <div className="d-flex justify-content-center align-items-center">
               <div data-aos="zoom-in" data-aos-duration="3000">
                 <p className="text-white cuenta-regresiva m-0 text-center">
-                  Viernes
+                  {eventData.weekendDay}
                 </p>
                 <p className="text-white text-center font-paris display-4">
-                  22 <span>de</span> Noviembre <span>de</span> 2024
+                  {eventData.day}
+                  <span>de</span> {eventData.month} <span>de</span>{" "}
+                  {eventData.year}
                 </p>
               </div>
             </div>
@@ -51,12 +58,12 @@ const SecondPage = ({ timeLeft }) => {
             >
               <p className="text-white display-5 font-paris">Faltan</p>
               <div id="demo" className="cuenta-regresiva m-0">
-                {timeLeft.expired ? (
+                {timeCountDown.expired ? (
                   <p>EXPIRED</p>
                 ) : (
                   <p>
-                    {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m{" "}
-                    {timeLeft.seconds}s
+                    {timeCountDown.days}d {timeCountDown.hours}h{" "}
+                    {timeCountDown.minutes}m {timeCountDown.seconds}s
                   </p>
                 )}
               </div>

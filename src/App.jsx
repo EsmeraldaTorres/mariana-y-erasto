@@ -3,7 +3,7 @@ import "animate.css";
 import "aos/dist/aos.css";
 import Invitacion from "./components/Intivacion";
 import Tickets from "./components/Tickets";
-import AllGuestPage from "./components/AllGuestPage";
+import AllGuestPage from "./components/GuestsPage/AllGuestPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -22,10 +22,7 @@ function App() {
             path="/pases-boda-arturo-y-noemi/:id/:user/:code"
             element={<Tickets />}
           ></Route>
-          <Route
-            path="/all-guests-page-arturo-y-noemi-boda/j13kl"
-            element={<AllGuestPage />}
-          />
+          <Route path="/data-page" element={<AllGuestPage />} />
           <Route
             path="/invite-form/access:digital-invite-by-esmeralda-01"
             element={<InviteForm />}
