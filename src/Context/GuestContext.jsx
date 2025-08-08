@@ -11,6 +11,8 @@ import iconFiesta from "../assets/img/fiesta.png";
 import iconComida from "../assets/img/comida.png";
 import iconIglesia from "../assets/img/iglesia.png";
 import iconRecepcion from "../assets/img/Recepcion (1).png";
+import salonUbicacion from "../assets/img/salon-cristina.png";
+import iglesiaUbicacion from "../assets/img/iglesia.jpeg";
 
 const GuestContext = createContext();
 

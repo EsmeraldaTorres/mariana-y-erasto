@@ -5,7 +5,7 @@ import iglesiaUbicacion from "../../assets/img/iglesia.jpeg";
 import { useGuest } from "../../Context/GuestContext";
 
 const Location = () => {
-  const { eventData } = useGuest;
+  const { eventData } = useGuest();
 
   return (
     <section className="ubicacion pt-4">
