@@ -9,7 +9,10 @@ const FirstPage = ({ isPlaying, togglePlayPause, audioRef, hide }) => {
 
   return (
     <>
-      <section className="home d-flex justify-content-center align-items-center">
+      <section
+        id="inicio"
+        className="home d-flex justify-content-center align-items-center"
+      >
         <div className="d-flex justify-content-center">
           <div
             className={`display-4 f-4 pt-30vh text-center font-paris text-white text-shadow2 pl-4 pr-4 mt-4  ${

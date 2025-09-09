@@ -16,7 +16,10 @@ const GiftSection = () => {
       </section>
 
       {/* Mesa de regalos */}
-      <section className="window-regalos d-flex justify-content-center align-items-center">
+      <section
+        id="mesa"
+        className="window-regalos d-flex justify-content-center align-items-center"
+      >
         <div className="w-75 d-flex justify-content-center">
           <div
             className="card-regalos p-4"

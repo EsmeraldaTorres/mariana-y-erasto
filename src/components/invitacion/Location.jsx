@@ -8,7 +8,7 @@ const Location = () => {
   const { eventData } = useGuest();
 
   return (
-    <section className="ubicacion pt-4">
+    <section id="ubicacion" className="ubicacion pt-4">
       <div>
         <p
           className="text-center m-0 pt-4 display-5"

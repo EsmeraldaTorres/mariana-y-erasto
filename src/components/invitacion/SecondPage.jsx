@@ -36,7 +36,7 @@ const SecondPage = ({}) => {
             </div>
           </div>
         </div>
-        <div className="container2">
+        <div id="fecha" className="container2">
           <div className="positon-relative">
             <div className="d-flex justify-content-center align-items-center">
               <div data-aos="zoom-in" data-aos-duration="3000">

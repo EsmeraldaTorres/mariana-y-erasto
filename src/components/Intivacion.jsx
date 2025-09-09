@@ -15,7 +15,6 @@ import LastPage from "./invitacion/LastPage";
 import QRCode from "qrcode.react";
 import AddToCalendar from "./invitacion/AddToCalendar";
 import jsPDF from "jspdf";
-
 import { useState, useRef } from "react";
 import decoration from "../assets/img/line2.png";
 import { doc, updateDoc } from "firebase/firestore";
@@ -36,6 +35,7 @@ import HotelSection from "./invitacion/HotelSection";
 import DinamicGallerySection from "./invitacion/DinamicGallerySection";
 import DressCode from "./invitacion/DressCode";
 import PhotoGallerySection from "./invitacion/PhotoGallerySection";
+import InvitacionesNavbar from "./invitacion/InvitacionesNavbar";
 
 const Intivacion = () => {
   const audioRef = useRef(null);
@@ -287,6 +287,7 @@ const Intivacion = () => {
       />
       {/* <!-- Invitacion --> */}
       <div id="invitacion" className={`invitacion ${hide ? "hide" : ""}`}>
+        <InvitacionesNavbar count={text.firstText} />
         <FirstPage
           isPlaying={isPlaying}
           togglePlayPause={togglePlayPause}
@@ -341,6 +342,7 @@ const Intivacion = () => {
         </section>
         <section className="text-center p-4 lead overflow-hidden">
           <h3
+            id="confirmar"
             className="font-paris principal-name-guest "
             data-aos="zoom-in"
             data-aos-duration="2000"

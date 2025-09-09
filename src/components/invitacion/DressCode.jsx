@@ -8,7 +8,10 @@ const DressCode = () => {
 
   return (
     <>
-      <section className="text-center h-100 p-4 padding-4 bg-vestimenta">
+      <section
+        id="vestimenta"
+        className="text-center h-100 p-4 padding-4 bg-vestimenta"
+      >
         <p
           className="display-4 font-gold font-paris mt-4 mb-4 title2"
           data-aos="zoom-in"

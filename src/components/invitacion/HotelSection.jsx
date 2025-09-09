@@ -6,7 +6,7 @@ const HotelSection = () => {
   const { eventData } = useGuest();
 
   return (
-    <section className="p-4 bg-white">
+    <section id="hoteles" className="p-4 bg-white">
       <div className="w-100">
         <p
           className="text-center mt-4 title2 font-paris font-gold"

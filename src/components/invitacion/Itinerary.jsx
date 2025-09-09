@@ -6,7 +6,7 @@ const Itinerary = () => {
   const { eventData } = useGuest();
 
   return (
-    <section className="itinerario">
+    <section id="itinerario" className="itinerario">
       <p className="text-center display-4 font-paris text-white m-0 pt-4">
         Itinerario
       </p>

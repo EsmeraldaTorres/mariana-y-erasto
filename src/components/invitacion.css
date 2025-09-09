@@ -659,7 +659,67 @@ td {
   background-repeat: no-repeat;
   background-position: center;
 }
+/* NAVBAR */
+.navbar-expanded {
+  background: rgba(0, 0, 0, 0.498); /* cambia el color cuando está abierto */
+  backdrop-filter: brightness(0.5);
+  transition: background 0.3s ease;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+.navbar-transparent .nav-link {
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+  border-radius: 10px;
+  padding-left: 1rem;
+  margin-top: 1rem;
+}
+.navbar-transparent .nav-link:hover {
+  color: #908073 !important; /* dorado para resaltar */
+}
+.navbar-transparent .nav-link {
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.navbar-transparent .nav-link:hover {
+  color: #908073 !important; /* dorado para resaltar */
+}
+.navbar-scrolled {
+  background: rgba(0, 0, 0, 0.7); /* se oscurece al hacer scroll */
+  backdrop-filter: blur(10px);
+}
+.transition-navbar {
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
 
+.navbar-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Visible al hacer scroll hacia arriba */
+.navbar-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Para que no se vea al inicio */
+.navbar-transparent {
+  background: rgba(235, 235, 235, 0.062);
+  padding: 1.5rem 0rem;
+  backdrop-filter: blur(3px);
+  border-bottom: solid 1px rgba(128, 128, 128, 0.383);
+}
 /* nuestro-inicio */
 .nuestro-inicio {
   background-color: rgb(197, 166, 119);
