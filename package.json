@@ -32,5 +32,8 @@
     "xlsx": "^0.18.5"
   },
   "author": "Esmeralda Torres Aguirre",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "vite-plugin-qrcode": "^0.3.0"
+  }
 }

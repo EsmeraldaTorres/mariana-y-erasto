@@ -6,14 +6,12 @@ import classNames from "classnames";
 import { useGuest } from "../../Context/GuestContext";
 
 const Sobre = ({ abrir, openInvitation, hide, openModal }) => {
-  const { eventData } = useGuest();
   return (
     <div
       id="parent-div"
       className={classNames(
         "bg-sobre d-flex justify-content-center align-items-center",
         {
-          "test-className": !openInvitation,
           "overflow-hidden": openModal,
         }
       )}

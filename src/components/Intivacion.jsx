@@ -221,6 +221,10 @@ const Intivacion = () => {
       setTimeout(() => {
         AOS.init({ duration: 1000, once: true });
       }, 4000);
+      document.documentElement.style.overflow = "initial"; // <html>
+      document.body.style.overflow = "initial";
+      document.documentElement.style.height = "initial"; // <html>
+      document.body.style.height = "initial";
     }
   }, [openInvitation]);
 

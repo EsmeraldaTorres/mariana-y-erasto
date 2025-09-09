@@ -3,6 +3,15 @@
   margin: 0;
   box-sizing: border-box;
 }
+html,
+body {
+  overflow-x: hidden; /* quita scroll horizontal */
+  overflow-y: hidden; /* quita scroll vertical */
+  height: 100%;
+}
+.over-y-hidden {
+  overflow: hidden;
+}
 ::-webkit-scrollbar {
   display: none;
 }
@@ -35,6 +44,9 @@ button:hover {
 }
 .overflow-hidden {
   overflow: hidden;
+}
+.overflow-auto {
+  overflow: auto;
 }
 .postion-fixed {
   position: fixed;
@@ -141,7 +153,7 @@ hr {
 /* SOBRE */
 .sobre {
   height: 100vh;
-  width: 80vw;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -283,8 +295,8 @@ td {
   border-radius: 100%;
 }
 .player-btn {
-  top: 2rem;
-  right: 2rem;
+  bottom: 1rem;
+  right: 1.2rem;
   position: fixed;
   justify-content: end;
   align-items: flex-end;
