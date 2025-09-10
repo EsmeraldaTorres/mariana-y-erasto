@@ -10,16 +10,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./App.css";
 import InviteForm from "./components/InviteForm";
+import ScrollManager from "./components/invitacion/ScrollManager";
 
 function App() {
   return (
     <>
       <Router>
+        <ScrollManager />
         <Routes>
           <Route path="/" element={<Invitacion />} />
           <Route path="/:id/:code" element={<Invitacion />} />
           <Route
-            path="/pases-boda-arturo-y-noemi/:id/:user/:code"
+            path="/pases-boda/:id/:user/:code"
             element={<Tickets />}
           ></Route>
           <Route path="/data-page" element={<AllGuestPage />} />
