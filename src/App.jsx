@@ -10,13 +10,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./App.css";
 import InviteForm from "./components/InviteForm";
-import ScrollManager from "./components/invitacion/ScrollManager";
 
 function App() {
   return (
     <>
       <Router>
-        <ScrollManager />
         <Routes>
           <Route path="/" element={<Invitacion />} />
           <Route path="/:id/:code" element={<Invitacion />} />

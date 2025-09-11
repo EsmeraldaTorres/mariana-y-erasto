@@ -4,8 +4,8 @@ import { useGuest } from "../../Context/GuestContext";
 
 import logo from "../../assets/img/logo.png";
 
-const InvitacionesNavbar = ({ count }) => {
-  const [showNavbar, setShowNavbar] = useState(false);
+const InvitacionesNavbar = ({ count, setShowNavbar, showNavbar }) => {
+  // const [showNavbar, setShowNavbar] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const { reservationDone } = useGuest();

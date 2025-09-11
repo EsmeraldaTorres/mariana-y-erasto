@@ -56,8 +56,8 @@ const Intivacion = () => {
   const [loading, setLoading] = useState(false);
   const [reservationDeny, setReservationDeny] = useState(false);
   const [ticketsConfirmados, setTicketsConfirmados] = useState();
-  const [confirmAsistence, setConfirmAsistence] = useState(false);
-  const [continuar, setContinuar] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(false);
+
   const [loadingPdf, setLoadingPdf] = useState(false);
 
   const printRef = useRef();
@@ -91,6 +91,8 @@ const Intivacion = () => {
 
   function abrir() {
     setOpenInvitation(true);
+    setShowNavbar(false);
+
     window.scrollTo(0, 0);
     setTimeout(function () {
       setHide(false);
@@ -291,7 +293,11 @@ const Intivacion = () => {
       />
       {/* <!-- Invitacion --> */}
       <div id="invitacion" className={`invitacion ${hide ? "hide" : ""}`}>
-        <InvitacionesNavbar count={text.firstText} />
+        <InvitacionesNavbar
+          count={text.firstText}
+          showNavbar={showNavbar}
+          setShowNavbar={setShowNavbar}
+        />
         <FirstPage
           isPlaying={isPlaying}
           togglePlayPause={togglePlayPause}

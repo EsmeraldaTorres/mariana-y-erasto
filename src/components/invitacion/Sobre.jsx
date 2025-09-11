@@ -3,23 +3,22 @@ import sobreArriba from "../../assets/img/sobrearriba.png";
 import sobreAbajo from "../../assets/img/sobreabajo.png";
 import logo from "../../assets/img/logo.png";
 import classNames from "classnames";
-import { useGuest } from "../../Context/GuestContext";
 
 const Sobre = ({ abrir, openInvitation, hide, openModal }) => {
   return (
     <div
       id="parent-div"
       className={classNames(
-        "bg-sobre d-flex justify-content-center align-items-center",
+        "bg-sobre d-flex justify-content-center  align-items-center",
         {
-          "overflow-hidden": openModal,
+          "overflow-hidden ": openModal,
+          "test-class": hide,
         }
       )}
     >
       <div id="hoja-principal" className={classNames("sobre", { hide: !hide })}>
         <img
           id="sobre-arriba"
-          loading="lazy"
           src={sobreArriba}
           className={classNames("animate__animated p-0 m-0 sobre-arriba", {
             animate__fadeOutUp: openInvitation,
@@ -38,11 +37,7 @@ const Sobre = ({ abrir, openInvitation, hide, openModal }) => {
         />
 
         <button id="btn-open" className="btn-open" onClick={abrir}>
-          <img
-            id="logo"
-            loading="lazy"
-            src={logo}
-            alt="logo"
+          <div
             className={classNames(
               "animate__animated animate__pulse text-center",
               {
@@ -50,7 +45,14 @@ const Sobre = ({ abrir, openInvitation, hide, openModal }) => {
                 hide: !hide,
               }
             )}
-          />
+          >
+            <img id="logo" loading="lazy" src={logo} alt="logo" />
+            {openInvitation ? (
+              <p className="display-7 txt-gray">Pulsa para abrir</p>
+            ) : (
+              <p className="display-7">Pulsa para abrir</p>
+            )}
+          </div>
         </button>
       </div>
     </div>
