@@ -144,7 +144,12 @@ hr {
 .animate__animated .animate__pulse {
   --animate-duration: 3s;
 }
-
+.txt-confirmado {
+  color: green;
+}
+.txt-negado {
+  color: #d21717;
+}
 /* SOBRE */
 /* sobre */
 .sobre {
