@@ -74,7 +74,7 @@ const InviteForm = () => {
       const docRef = doc(db, "people", formData.id);
       await setDoc(docRef, {
         ...formData,
-        qrUrl: `pases-boda-${eventData.groom}-y-${eventData.bride}/${formData?.id}/${formData?.principalName}/${formData?.code}`,
+        qrUrl: `pases-boda/${formData?.id}/${formData?.principalName}/${formData?.code}`,
       });
       setFormData({
         id: "",
