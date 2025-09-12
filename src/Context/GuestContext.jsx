@@ -62,7 +62,7 @@ export const GuestProvider = ({ children }) => {
     }
   };
   const eventData = {
-    url: "https://gaby-y-angel-nuestra-boda.netlify.app/",
+    url: "https://di-esmeralda-muestra-paquete-e.vercel.app/",
     bride: "Noemi",
     groom: "Arturo",
     weekendDay: "viernes",
