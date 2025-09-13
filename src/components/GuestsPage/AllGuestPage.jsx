@@ -150,45 +150,100 @@ const AllGuestPage = () => {
       return copy;
     });
   };
-
-  // Actualiza las mesas asignadas en Firestore en batch
   const handleAssignTables = async () => {
     try {
       const batch = writeBatch(db);
 
-      confirmedPeople.forEach((confirmedPerson) => {
-        guests.forEach((guest) => {
-          if (!Array.isArray(guest.acompanist)) return;
+      // Mapa temporal: { [id]: acompanistActualizado }
+      const updates = {};
 
-          let updated = false;
-          const updatedAcompanist = guest.acompanist.map((a) => {
-            if (
-              a.name === confirmedPerson.name &&
-              a.principalName === confirmedPerson.principalName
-            ) {
-              updated = true;
-              return {
-                ...a,
-                asist: confirmedPerson.asist ?? a.asist,
-                table: confirmedPerson.table ?? a.table ?? null,
-              };
+      confirmedPeople.forEach((simpleObj) => {
+        guests.forEach((nestedObj) => {
+          if (Array.isArray(nestedObj.acompanist)) {
+            nestedObj.acompanist = nestedObj.acompanist.map((acompanistObj) => {
+              if (
+                acompanistObj.name === simpleObj.name &&
+                acompanistObj.principalName === simpleObj.principalName
+              ) {
+                return {
+                  ...acompanistObj,
+                  asist:
+                    simpleObj.asist !== undefined
+                      ? simpleObj.asist
+                      : acompanistObj.asist,
+                  table:
+                    simpleObj.table !== undefined
+                      ? simpleObj.table
+                      : acompanistObj.table || null,
+                };
+              }
+              return acompanistObj;
+            });
+
+            // Guardar cambios en el mapa en vez de directamente en el batch
+            if (nestedObj.id) {
+              updates[nestedObj.id] = nestedObj.acompanist;
             }
-            return a;
-          });
-
-          if (updated) {
-            const guestRef = doc(db, "people", guest.id);
-            batch.update(guestRef, { acompanist: updatedAcompanist });
+          } else {
+            console.error(
+              `nestedObj.acompanist no es un arreglo o es undefined. Invitado: ${nestedObj.name}`
+            );
           }
         });
       });
 
+      // Aplicar solo un update por documento
+      Object.entries(updates).forEach(([id, acompanist]) => {
+        const guestRef = doc(db, "people", id);
+        batch.update(guestRef, { acompanist });
+      });
+
+      // Commit de los cambios
       await batch.commit();
+      console.log("Documentos actualizados correctamente en Firestore.");
       setOpenModal(true);
     } catch (error) {
       console.error("Error actualizando documentos: ", error);
     }
   };
+  // Actualiza las mesas asignadas en Firestore en batch
+  // const handleAssignTables = async () => {
+  //   try {
+  //     const batch = writeBatch(db);
+
+  //     confirmedPeople.forEach((confirmedPerson) => {
+  //       guests.forEach((guest) => {
+  //         if (!Array.isArray(guest.acompanist)) return;
+
+  //         let updated = false;
+  //         const updatedAcompanist = guest.acompanist.map((a) => {
+  //           if (
+  //             a.name === confirmedPerson.name &&
+  //             a.principalName === confirmedPerson.principalName
+  //           ) {
+  //             updated = true;
+  //             return {
+  //               ...a,
+  //               asist: confirmedPerson.asist ?? a.asist,
+  //               table: confirmedPerson.table ?? a.table ?? null,
+  //             };
+  //           }
+  //           return a;
+  //         });
+
+  //         if (updated) {
+  //           const guestRef = doc(db, "people", guest.id);
+  //           batch.update(guestRef, { acompanist: updatedAcompanist });
+  //         }
+  //       });
+  //     });
+
+  //     await batch.commit();
+  //     setOpenModal(true);
+  //   } catch (error) {
+  //     console.error("Error actualizando documentos: ", error);
+  //   }
+  // };
 
   // Genera y descarga el PDF con la tabla
   const handleDownloadPdf = () => {
@@ -367,7 +422,7 @@ const AllGuestPage = () => {
                 Desliza hacia la izquierda para ver todo el contenido de la
                 tabla
               </div>
-              <table className="table-width">
+              <table id="pdf-table" className="table-width">
                 <thead>
                   <tr>
                     <th className="p-2 text-gray">No.</th>
