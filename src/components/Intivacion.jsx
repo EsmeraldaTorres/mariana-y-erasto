@@ -16,7 +16,9 @@ import QRCode from "qrcode.react";
 import AddToCalendar from "./invitacion/AddToCalendar";
 import jsPDF from "jspdf";
 import { useState, useRef } from "react";
-import decoration from "../assets/img/line2.png";
+import decoration from "../assets/img/6.png";
+import decoration2 from "../assets/img/1.png";
+
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
@@ -265,7 +267,7 @@ const Intivacion = () => {
   }, []);
 
   useEffect(() => {
-    const countDownDateAsistence = new Date("Jun 26, 2026 00:00").getTime();
+    const countDownDateAsistence = new Date("Feb 03, 2026 00:00").getTime();
 
     const countdownAsistence = () => {
       const now = new Date().getTime();
@@ -307,7 +309,7 @@ const Intivacion = () => {
         <SecondPage timeLeft={timeLeft} />
         <section className="ribbon">
           <p className="m-0 display-6">
-            El inicio de la familia Andueza Collins
+            El inicio de la familia Villegas Elizondo
           </p>
         </section>
         <ParentsSection />
@@ -339,8 +341,8 @@ const Intivacion = () => {
         </section>
         <DinamicGallerySection />
         <section className="bg-gray p-3">
-          <p className="text-center p-0 m-0">
-            {/* <i className="bi bi-hearts"></i>Respetuosamente NO NIÑOS */}
+          <p className="text-center p-0 m-0 py-4 lead f-w-700">
+            Respetuosamente NO NIÑOS
           </p>
         </section>
         <DressCode />
@@ -359,7 +361,14 @@ const Intivacion = () => {
           >
             {guest?.principalName}
           </h3>
-
+          <div className="pb-4 d-flex justify-content-center align-items-center">
+            <img
+              loading="lazy"
+              src={decoration2}
+              alt="linae"
+              className="decoration"
+            />
+          </div>
           {guest?.code === "320922" || guest?.acompanist?.length === 1 ? (
             <p>Hemos reservado {guest?.acompanist?.length} lugar para ti</p>
           ) : (
@@ -405,7 +414,7 @@ const Intivacion = () => {
             }`}
           >
             <div
-              className="w-75 py-4"
+              className="w-75 pb-4"
               data-aos="fade-in"
               data-aos-duration="3000"
             >

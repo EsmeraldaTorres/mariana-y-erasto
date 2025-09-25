@@ -1,6 +1,9 @@
 import React from "react";
-import decoration from "../../assets/img/Untitled design (3).png";
-import lineaAlReves from "../../assets/img/lineaalreves.png";
+import decoration from "../../assets/img/2.png";
+import decoration2 from "../../assets/img/4.png";
+import decoration3 from "../../assets/img/7.png";
+
+import lineaAlReves from "../../assets/img/2.png";
 import { useGuest } from "../../Context/GuestContext";
 import useCountdown from "../hooks/useCountDown";
 
@@ -14,23 +17,23 @@ const SecondPage = ({}) => {
         <div className="container d-flex justify-content-center align-items-center">
           <div className="col-10">
             <div data-aos="fade-down" data-aos-duration="2000">
-              <div className="pb-4 d-flex justify-content-center align-items-center">
+              <div className="py-4 mt-4 d-flex justify-content-center align-items-center">
                 <img
                   loading="lazy"
                   src={decoration}
                   alt="linae"
-                  className="decoration"
+                  className="decoration rotate-180"
                 />
               </div>
               <p className="text-center display-6">
                 El día más importante de nuestras vidas ha llegado
               </p>
-              <div className="pt-2 d-flex justify-content-center align-items-center">
+              <div className="py-4 mb-4 d-flex justify-content-center align-items-center">
                 <img
                   loading="lazy"
                   src={lineaAlReves}
                   alt="linea"
-                  className="decoration"
+                  className="decoration "
                 />
               </div>
             </div>
@@ -43,9 +46,9 @@ const SecondPage = ({}) => {
                 <p className="text-white cuenta-regresiva m-0 text-center">
                   {eventData.weekendDay}
                 </p>
-                <p className="text-white text-center font-paris display-4">
+                <p className="text-white px-3 text-center font-paris display-4">
                   {eventData.day}
-                  <span>de</span> {eventData.month} <span>de</span>{" "}
+                  <span> de</span> {eventData.month} <span>de</span>{" "}
                   {eventData.year}
                 </p>
               </div>
@@ -59,7 +62,7 @@ const SecondPage = ({}) => {
               <p className="text-white display-5 font-paris">Faltan</p>
               <div id="demo" className="cuenta-regresiva m-0">
                 {timeCountDown.expired ? (
-                  <p>EXPIRED</p>
+                  <p>- - -</p>
                 ) : (
                   <p>
                     {timeCountDown.days}d {timeCountDown.hours}h{" "}
@@ -83,7 +86,7 @@ const SecondPage = ({}) => {
               <div className="pb-2 d-flex justify-content-center align-items-center">
                 <img
                   loading="lazy"
-                  src={lineaAlReves}
+                  src={decoration2}
                   alt="linea"
                   className="decoration"
                 />
@@ -106,6 +109,14 @@ const SecondPage = ({}) => {
                   Tu presencia ha sido una parte valiosa de nuestra historia de
                   amor, y no podríamos comenzar este nuevo capítulo sin ti.
                 </p>
+                <div className="pb-2 d-flex justify-content-center align-items-center">
+                  <img
+                    loading="lazy"
+                    src={decoration3}
+                    alt="linea"
+                    className="decoration"
+                  />
+                </div>
                 <p
                   className="pr-4 pl-4"
                   data-aos="fade-up"
@@ -114,9 +125,9 @@ const SecondPage = ({}) => {
                   Nos encantaría que nos acompañaras y nos llenaras de alegría
                   en nuestro día tan especial.
                 </p>
-                <div className="d-flex justify-content-center">
+                {/* <div className="d-flex justify-content-center">
                   <hr />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

@@ -85,7 +85,7 @@ const Tickets = () => {
   return (
     <div className="p-4">
       <h1 className="text-center font-paris font-gold display-5 mt-4 pt-4">
-        {"Arturo & Noemi"}
+        {"Mariana & Erasto"}
       </h1>
       <p className="text-center display-5">Nuestra Boda</p>
 

@@ -47,7 +47,7 @@ const InvitacionesNavbar = ({ count, setShowNavbar, showNavbar }) => {
           href="#inicio"
           className="text-white text-shadow fw-bold font-paris d-flex display-5"
         >
-          Arturo & Noemi
+          Mariana & Erasto
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 

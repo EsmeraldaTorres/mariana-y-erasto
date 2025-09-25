@@ -30,11 +30,25 @@ const GodparentsSection = () => {
                   alt={`Ícono de ${title}`}
                 />
                 <p className="card-text">{title}</p>
-                {names.map((name, i) => (
-                  <p className="card-text display-6" key={i}>
-                    {name}
-                  </p>
-                ))}
+                {index === 0
+                  ? names.map((name, i) =>
+                      i === 0 ? (
+                        <>
+                          <p className="card-text display-6" key={i}>
+                            {name} <span className="text-white">ho</span>
+                          </p>{" "}
+                        </>
+                      ) : (
+                        <p className="card-text display-6" key={i}>
+                          {name}{" "}
+                        </p>
+                      )
+                    )
+                  : names.map((name, i) => (
+                      <p className="card-text display-6" key={i}>
+                        {name}
+                      </p>
+                    ))}
               </div>
             </div>
           </Carousel.Item>

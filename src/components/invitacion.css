@@ -71,7 +71,7 @@ h3 {
   font-size: 1.2rem;
 }
 .font-gold {
-  color: rgb(168, 143, 105);
+  color: #3f5b8d;
 }
 .text-shadow {
   text-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
@@ -104,7 +104,7 @@ h3 {
 
 /* BACKGROUDNS */
 .bg-gold {
-  background-color: rgb(168, 143, 105) !important;
+  background-color: #203151 !important;
 }
 .bg-gray {
   background-color: rgba(189, 188, 188, 0.29);
@@ -130,7 +130,7 @@ hr {
   width: 200px;
 }
 .ribbon {
-  background-color: rgba(189, 188, 188, 0.29);
+  background-color: #e4e3db;
   height: min-content;
   display: flex;
   justify-content: center;
@@ -496,20 +496,23 @@ td {
   width: max-content;
   font-weight: 500;
   border-radius: 10px;
-  background: #ac9261;
+  background: #3f5b8d;
   font-size: 1.2em;
   border: none;
   padding: 0.7em;
   color: white;
 }
+.rotate-180 {
+  rotate: 180deg;
+}
 .btn-save-disabled {
   font-weight: 500;
   border-radius: 10px;
-  background: #b6a68d;
+  background: #40454d;
   font-size: 20px;
   border: none;
   padding: 0.5em;
-  color: rgb(193 193 193);
+  color: rgb(128, 121, 121);
 }
 .btn-agendar {
   font-family: cursive;

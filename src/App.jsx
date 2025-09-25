@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<Invitacion />} />
           <Route path="/:id/:code" element={<Invitacion />} />
           <Route
-            path="/pases-boda-arturo-y-noemi/:id/:user/:code"
+            path="/pases-boda/:id/:user/:code"
             element={<Tickets />}
           ></Route>
           <Route path="/data-page" element={<AllGuestPage />} />

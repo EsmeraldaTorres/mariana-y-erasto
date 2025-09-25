@@ -26,7 +26,7 @@ const HotelSection = () => {
                   data-aos="zoom-in-up"
                   data-aos-easing="linear"
                   data-aos-duration="1500"
-                  className="f-w-700 pr-4 pl-4 mb-4 display-5 title2 text-center font-paris"
+                  className="f-w-70 pr-4 pl-4 mb-4 display-5 title2 text-center font-pari"
                 >
                   {hotel.name}
                 </h2>

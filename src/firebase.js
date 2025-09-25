@@ -3,13 +3,12 @@ import { getFirestore } from "firebase/firestore";
 import "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDKoJ7TPLSXJGM5zr19LnTmgRiCxKLU4PI",
-  authDomain: "invitaciones-55c1a.firebaseapp.com",
-  projectId: "invitaciones-55c1a",
-  storageBucket: "invitaciones-55c1a.appspot.com",
-  messagingSenderId: "673447605232",
-  appId: "1:673447605232:web:470f34d96576c11ddca335",
-  measurementId: "G-8QXEG9TV1Q",
+  apiKey: "AIzaSyD71SUNYV03R_uvuV5ytK3RmDCvPQqBD8o",
+  authDomain: "diana-y-gabriel.firebaseapp.com",
+  projectId: "diana-y-gabriel",
+  storageBucket: "diana-y-gabriel.firebasestorage.app",
+  messagingSenderId: "322462006799",
+  appId: "1:322462006799:web:24c5be1a8056859e502d7a",
 };
 
 // Initialize Firebase

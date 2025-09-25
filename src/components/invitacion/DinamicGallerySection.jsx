@@ -1,5 +1,5 @@
 import React from "react";
-import lineDecoration from "../../assets/img/line2.png";
+import lineDecoration from "../../assets/img/5.png";
 import { useGuest } from "../../Context/GuestContext";
 const DinamicGallerySection = () => {
   const { eventData } = useGuest();
@@ -18,13 +18,13 @@ const DinamicGallerySection = () => {
       <section className="p-4 bg-dinamic-galery">
         <div className="principal-text">
           <h3
-            className="text-center font-paris letter-s-1px"
+            className="text-center py-4 font-paris letter-s-1px"
             data-aos="fade-up"
             data-aos-duration="3000"
           >
             {" "}
-            ¡Todas las fotos que tomen ustedes, nuestro invitados, las tendremos
-            en una misma galería!
+            ¡Todas las fotos que tomen ustedes, nuestros invitados, las
+            tendremos en una misma galería!
           </h3>
           <div className="d-flex justify-content-around align-items-center">
             <img className="decoration  " src={lineDecoration} alt="linea" />
@@ -42,7 +42,7 @@ const DinamicGallerySection = () => {
                     {" "}
                     <a
                       href={`https://www.wedshoots.com/mx?albumId=${eventData.code}`}
-                      className=" ml-2 font-gold d-flex align-items-center animate__animated animate__pulse animate__infinite"
+                      className=" ml-2 mx-2 font-gold d-flex align-items-center animate__animated animate__pulse animate__infinite"
                     >
                       Click aquí.
                     </a>

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactAudioPlayer from "react-audio-player";
-import audioFile from "../../assets/audio/musica-lewis-coffee-at-midnight.mp3";
+import audioFile from "../../assets/audio/alex-warren-ordinary.mp3";
 import { PlayCircle, PauseCircle, Coin } from "react-bootstrap-icons";
 import { useGuest } from "../../Context/GuestContext";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import dressCode from "../../assets/img/etiqueta rigurosa.png";
-import lineDecoration from "../../assets/img/lineaalreves.png";
+import lineDecoration from "../../assets/img/6.png";
 import { useGuest } from "../../Context/GuestContext";
 
 const DressCode = () => {

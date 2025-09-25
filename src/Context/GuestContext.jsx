@@ -2,17 +2,23 @@ import React, { createContext, useContext, useState } from "react";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import iconLazo from "../assets/img/lazo.png";
+import iconTestigo from "../assets/img/testigo.png";
 import iconCoin from "../assets/img/coin.png";
 import anillos from "../assets/img/anillos.png";
-import hotelOne from "../assets/img/gamma-xalapa-hotel.png";
-import hotelTwo from "../assets/img/holiday-inn-hotel.png";
-import hotelThree from "../assets/img/gran-hotel-xalpa-hotel.png";
+import hotelOne from "../assets/img/hotel1.png";
+import hotelTwo from "../assets/img/hotel2.png";
+import hotelThree from "../assets/img/hotel3.png";
+import hotel4 from "../assets/img/hotel4.png";
+import hotel5 from "../assets/img/hotel5.png";
+import hotel6 from "../assets/img/hotel6.png";
+import hotel7 from "../assets/img/hotel7.png";
+
 import iconFiesta from "../assets/img/fiesta.png";
 import iconComida from "../assets/img/comida.png";
-import iconIglesia from "../assets/img/iglesia.png";
+import iconCivil from "../assets/img/civil.png";
 import iconRecepcion from "../assets/img/Recepcion (1).png";
-import salonUbicacion from "../assets/img/salon-cristina.png";
-import iglesiaUbicacion from "../assets/img/iglesia.jpeg";
+import dressCode from "../assets/img/etiqueta rigurosa.png";
+import iglesiaUbicacion from "../assets/img/llanito.png";
 
 const GuestContext = createContext();
 
@@ -62,15 +68,15 @@ export const GuestProvider = ({ children }) => {
     }
   };
   const eventData = {
-    url: "https://di-esmeralda-muestra-paquete-e.vercel.app/",
-    bride: "Noemi",
-    groom: "Arturo",
-    weekendDay: "viernes",
-    day: "22",
-    month: "Diciembre",
-    year: "2025",
-    countDown: "Jul 05, 2026 00:00",
-    limitConfirmation: "12 de Noviembre",
+    url: "https://mariana-y-erasto-nuestra-boda.netlify.app/",
+    bride: "Erasto",
+    groom: "Mariana",
+    weekendDay: "Sábado",
+    day: "28",
+    month: "Febrero",
+    year: "2026",
+    countDown: "Feb 28, 2026 17:00",
+    limitConfirmation: "2 de Febrero",
     lastName: " Andueza Collins",
     fatherShe: "Rogelio Macías Ruiz",
     motherShe: "Andrea Lerma Gonzalez",
@@ -78,19 +84,15 @@ export const GuestProvider = ({ children }) => {
     motherHe: "Leticia Ortiz Villareal",
     padrinos: [
       {
-        icon: anillos,
-        title: "Anillos",
-        names: ["Roberto Rodriguez Saenz", "Veronica Martínez Torres"],
+        icon: iconTestigo,
+        title: "Testigos de ella",
+        names: ["Israel Espinoza Ortiz", "Brenda Nalleli Martinez Estevez"],
       },
+
       {
-        icon: iconCoin,
-        title: "Arras",
-        names: ["José Díaz Hernández", "Ilse Macías Hernández"],
-      },
-      {
-        icon: iconLazo,
-        title: "Lazo",
-        names: ["Rogelio Martínez Loredo", "Ana Salazar Montes"],
+        icon: iconTestigo,
+        title: "Testigos de él",
+        names: ["Erick Daniel Anzures Gonzalez", "Alejandra Ramírez Moreno"],
       },
     ],
     itineraryItems: [
@@ -117,35 +119,62 @@ export const GuestProvider = ({ children }) => {
     ],
     hotels: [
       {
-        name: "Gran Hotel Xalapa",
-        time: "A 40 min de la fiesta",
-        address:
-          "Guadalupe Victoria 163, Zona Centro, Centro, 91000 Xalapa-Enríquez, Ver.",
+        name: "Hotel El Pedregal",
+        time: "A 2 min de la fiesta",
+        address: "Av. Miguel Hidalgo, 91240 Xico, Ver.",
         img: hotelOne,
-        link: "https://maps.app.goo.gl/3yXfaZVray72iGWv5",
+        link: "https://maps.app.goo.gl/4DTWhP6esuALN55e9",
       },
       {
-        name: "Holiday Inn Express Xalapa",
-        time: "A 40 min de la fiesta",
+        name: "Jardín de los Anturios",
+        time: "A 10 min de la fiesta",
         address:
-          "Ignacio Zaragoza 8, Zona Centro, Centro, 91000 Xalapa-Enríquez, Ver.",
+          "Guadalupe Victoria, Camino de Terrazeria S/N, entre el Panteon de Xico y, El Haya, 91240 Xico, Ver.",
         img: hotelTwo,
         link: "https://maps.app.goo.gl/wBtTrNBGZQTcYWhM9",
       },
       {
-        name: "Gamma Xalapa Nubara",
-        time: "A 32 min de la fiesta",
+        name: "Hotel Hacienda San Bartolo",
+        time: "A 5 min de la fiesta",
         address:
-          "Av. Adolfo Ruiz Cortines 912 Col, U.H. del Bosque, 91017 Xalapa-Enríquez, Ver.",
+          "Calzada de Texolo, rancho san Bartolo Rancho san Bartolo, 91240 Xico, Ver.",
         img: hotelThree,
-        link: "https://maps.app.goo.gl/weUd2wWCdZnn8dG78",
+        link: "https://maps.app.goo.gl/n18re5QN4pNvPLFT6",
+      },
+      {
+        name: "Hotel HG",
+        time: "A 1 min de la fiesta",
+        address: "Melchor Ocampo 9, Xico, 91240 Xico, Ver.",
+        img: hotel4,
+        link: "https://maps.app.goo.gl/pE3k8TsFpva6Z8pG9",
+      },
+      {
+        name: "Posada La Querencia",
+        time: "A 8 min de la fiesta",
+        address: "Camino a la, A Texolo Km. 1, 91240 Xico, Ver.",
+        img: hotel5,
+        link: "https://maps.app.goo.gl/Hk4FkUgeekiv19797",
+      },
+      {
+        name: "Hotel Posada Coatepec",
+        time: "A 21 min de la fiesta",
+        address: "Hidalgo 9, Centro, 91500 Coatepec, Ver.",
+        img: hotel6,
+        link: "https://maps.app.goo.gl/rtRNFFAn5w2Ruzo19",
+      },
+      {
+        name: "Hotel Posada San Jeronimo",
+        time: "A 20 min de la fiesta",
+        address: "16 de Septiembre 26, Centro, 91500 Coatepec, Ver.",
+        img: hotel7,
+        link: "https://maps.app.goo.gl/QbjYZfu2S9LebXfc7",
       },
     ],
     events: [
       {
-        title: "Ceremonia religiosa",
+        title: "Ceremonia civil",
         time: "5:00pm",
-        icon: iconIglesia,
+        icon: iconCivil,
       },
       {
         title: "Recepción",
@@ -153,7 +182,7 @@ export const GuestProvider = ({ children }) => {
         icon: iconRecepcion,
       },
       {
-        title: "Fiesta",
+        title: "Cena",
         time: "7:00pm",
         icon: iconComida,
       },
@@ -165,26 +194,14 @@ export const GuestProvider = ({ children }) => {
     ],
     locations: [
       {
-        title: "Ceremonia",
+        title: "Ceremonia & Recepción",
         time: "19:00hrs",
         image: iglesiaUbicacion,
         alt: "iglesia",
-        name: 'Parroquia "San Isidro Labrador"',
-        address: "Teresa Vera 102, Centro, 86300 Comalcalco, Tab.",
-        mapLink:
-          "https://www.google.com/maps?q=parroquia+san+isidro+labrador+comalcalco&rlz=1C5CHFA_enMX973MX974&um=1&ie=UTF-8&sa=X&ved=2ahUKEwjNkcnum-j5AhXpC0QIHT8FAkYQ_AUoAXoECAIQAw",
+        name: "Salón Llanito 33",
+        address: "Zaragoza 98, Col.Centro Xico, Veracruz-Llave, Mexico",
+        mapLink: "https://maps.app.goo.gl/id5RNFCL6dwysMhw6",
         delay: 500,
-      },
-      {
-        title: "Recepción",
-        time: "20:00hrs",
-        image: salonUbicacion,
-        alt: "salon",
-        name: 'Salón de Eventos "Cristina"',
-        address: "Recinto 102, Centro, 86300 Comalcalco, Tab.",
-        mapLink:
-          "https://www.google.com/maps/place/Sal%C3%B3n+Jard%C3%ADn+Mar%C3%ADa+Cristina/@19.289967,-99.9551998,11z/data=!4m9!1m2!2m1!1ssalon+cristina!3m5!1s0x85cd89ca4f9cc363:0xd908e41b7f9f839b!8m2!3d19.289967!4d-99.6750484!15sCg5zYWxvbiBjcmlzdGluYVoQIg5zYWxvbiBjcmlzdGluYZIBFmZ1bmN0aW9uX3Jvb21fZmFjaWxpdHmaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUk5kM1pFWVVkbkVBReABAA",
-        delay: 700,
       },
     ],
     transferDetails: {
@@ -194,11 +211,11 @@ export const GuestProvider = ({ children }) => {
     },
     code: "MXsadfa",
     dressCode: {
-      // img: dressCode,
-      name: "formal",
+      img: dressCode,
+      name: "Formal",
     },
     event: {
-      title: "Boda Arturo & Noemi",
+      title: "Boda Mariana y Erasto",
       location: "Salón Hyde",
       description: `Código de Vestimenta: Formal, Ubicación en maps: https://maps.app.goo.gl/V7iCPBBP1oK879KX6`,
       startDate: "20241122T190000Z", // formato UTC

@@ -1,12 +1,11 @@
 import React from "react";
-import line2 from "../../assets/img/line2.png";
+import line2 from "../../assets/img/1.png";
 import { useGuest } from "../../Context/GuestContext";
 
-const brideParents = ["Rogelio Macías Ruiz", "Andrea Lerma Gonzalez"];
-const groomParents = ["Antonio Juárez Mota", "Leticia Ortiz Villareal"];
+const brideParents = ["Erasto Villegas Salas", "Maria Esther Galván Abrego"];
+const groomParents = ["Mauricio Elizondo Mella", "Alejandra Sánchez Pernas"];
 
 const ParentsSection = () => {
-  const { eventData } = useGuest();
   return (
     <section className="p-4">
       <p

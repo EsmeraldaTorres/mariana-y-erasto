@@ -1,7 +1,7 @@
 import React from "react";
 import logoLiverpool from "../../assets/img/LIVERPOOL-logo.png";
-import decoration from "../../assets/img/Untitled design (3).png";
-import lineaAlReves from "../../assets/img/lineaalreves.png";
+import decoration from "../../assets/img/3.png";
+import lineaAlReves from "../../assets/img/3.png";
 import { useGuest } from "../../Context/GuestContext";
 
 const GiftSection = () => {
@@ -12,7 +12,14 @@ const GiftSection = () => {
       <section className="p-4" data-aos="zoom-in" data-aos-duration="2000">
         <DecorativeLine img={lineaAlReves} />
         <TextBlock text="¡Que nos acompañes es lo más importante! Y si está en tu disposición realizar una muestra de cariño, estaremos muy agradecidos" />
-        <DecorativeLine img={decoration} />
+        <div className="py-4 d-flex justify-content-center align-items-center">
+          <img
+            loading="lazy"
+            className="line rotate-180"
+            src={lineaAlReves}
+            alt="línea decorativa"
+          />
+        </div>
       </section>
 
       {/* Mesa de regalos */}
@@ -43,17 +50,17 @@ const GiftSection = () => {
                 link="https://www.liverpool.com.mx/tienda/home"
                 buttonText="Ir a mesa de regalos"
               />
-              <GiftOption
+              {/* <GiftOption
                 icon={<i className="bi bi-envelope icon-sobre"></i>}
                 text="Sobre con dinero en efectivo"
-              />
+              /> */}
             </div>
           </div>
         </div>
       </section>
 
       {/* Transferencia bancaria */}
-      <section className="d-flex justify-content-center align-items-center">
+      {/* <section className="d-flex justify-content-center align-items-center">
         <div className="w-75 py-4 text-center mt-4">
           <TransferLine text="¡Gracias por tus muestras de cariño!" />
           <TransferLine text="Si así lo prefieres, también puedes hacer transferencia" />
@@ -62,7 +69,7 @@ const GiftSection = () => {
           <p>Arturo Jiménez Díaz</p>
           <p>BBVA</p>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };

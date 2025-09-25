@@ -1,7 +1,9 @@
 import React from "react";
-import lineaAlReves from "../../assets/img/lineaalreves.png";
-import salonUbicacion from "../../assets/img/salon-cristina.png";
-import iglesiaUbicacion from "../../assets/img/iglesia.jpeg";
+import lineaAlReves from "../../assets/img/5.png";
+import lineaAlReves2 from "../../assets/img/6.png";
+
+// import salonUbicacion from "../../assets/img/salon-cristina.png"
+// import iglesiaUbicacion from "../../assets/img/iglesia.jpeg";
 import { useGuest } from "../../Context/GuestContext";
 
 const Location = () => {
@@ -18,7 +20,11 @@ const Location = () => {
           Ubicaciones
         </p>
         <div className="d-flex justify-content-center align-items-center">
-          <img className="line" src={lineaAlReves} alt="línea decorativa" />
+          <img
+            className="line mt-4"
+            src={lineaAlReves}
+            alt="línea decorativa"
+          />
         </div>
       </div>
 
@@ -44,7 +50,14 @@ const Location = () => {
                 />
               </div>
 
-              <p className="text-center display-6 py-3">{loc.name}</p>
+              <p className="text-center display-6 pt-3">{loc.name}</p>
+              <div className="d-flex justify-content-center align-items-center">
+                <img
+                  className="line mb-2"
+                  src={lineaAlReves2}
+                  alt="línea decorativa"
+                />
+              </div>
               <p className="text-center">{loc.address}</p>
 
               <div className="d-flex align-items-center py-4 justify-content-center">
