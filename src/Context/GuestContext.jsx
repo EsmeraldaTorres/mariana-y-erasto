@@ -12,7 +12,7 @@ import hotel4 from "../assets/img/hotel4.png";
 import hotel5 from "../assets/img/hotel5.png";
 import hotel6 from "../assets/img/hotel6.png";
 import hotel7 from "../assets/img/hotel7.png";
-
+import hotel8 from "../assets/img/hotel8.png";
 import iconFiesta from "../assets/img/fiesta.png";
 import iconComida from "../assets/img/comida.png";
 import iconCivil from "../assets/img/civil.png";
@@ -126,12 +126,11 @@ export const GuestProvider = ({ children }) => {
         link: "https://maps.app.goo.gl/4DTWhP6esuALN55e9",
       },
       {
-        name: "Jardín de los Anturios",
-        time: "A 10 min de la fiesta",
-        address:
-          "Guadalupe Victoria, Camino de Terrazeria S/N, entre el Panteon de Xico y, El Haya, 91240 Xico, Ver.",
-        img: hotelTwo,
-        link: "https://maps.app.goo.gl/wBtTrNBGZQTcYWhM9",
+        name: "Hotel HG",
+        time: "A 1 min de la fiesta",
+        address: "Melchor Ocampo 9, Xico, 91240 Xico, Ver.",
+        img: hotel4,
+        link: "https://maps.app.goo.gl/pE3k8TsFpva6Z8pG9",
       },
       {
         name: "Hotel Hacienda San Bartolo",
@@ -142,32 +141,40 @@ export const GuestProvider = ({ children }) => {
         link: "https://maps.app.goo.gl/n18re5QN4pNvPLFT6",
       },
       {
-        name: "Hotel HG",
-        time: "A 1 min de la fiesta",
-        address: "Melchor Ocampo 9, Xico, 91240 Xico, Ver.",
-        img: hotel4,
-        link: "https://maps.app.goo.gl/pE3k8TsFpva6Z8pG9",
+        name: "Hotel Coyopolan",
+        time: "A 10 min de la fiesta",
+        address: "Venustiano Carranza Nte. Sur, Centro, 91240 Xico, Ver.",
+        img: hotelTwo,
+        link: "https://maps.app.goo.gl/ZegHP4uZLKSNS6N39",
       },
+
       {
-        name: "Posada La Querencia",
+        name: "Las Magdalenas Hotel Boutique",
         time: "A 8 min de la fiesta",
-        address: "Camino a la, A Texolo Km. 1, 91240 Xico, Ver.",
+        address: "Av. Miguel Hidalgo 123, Centro, 91240 Xico, Ver.",
         img: hotel5,
-        link: "https://maps.app.goo.gl/Hk4FkUgeekiv19797",
+        link: "https://maps.app.goo.gl/BZhya1tKXR4nquJw9",
       },
       {
-        name: "Hotel Posada Coatepec",
+        name: "Alojamientos Xico VIP",
         time: "A 21 min de la fiesta",
-        address: "Hidalgo 9, Centro, 91500 Coatepec, Ver.",
+        address: "Hermenegildo Galeana S/N, 91240 Xico, Ver.",
         img: hotel6,
-        link: "https://maps.app.goo.gl/rtRNFFAn5w2Ruzo19",
+        link: "https://maps.app.goo.gl/LeqfLRPxujF7rcsGA",
       },
       {
-        name: "Hotel Posada San Jeronimo",
+        name: "Casa de las Hadas",
         time: "A 20 min de la fiesta",
-        address: "16 de Septiembre 26, Centro, 91500 Coatepec, Ver.",
+        address: "Guadalupe Victoria 54, Centro, 91240 Xico, Ver.",
         img: hotel7,
-        link: "https://maps.app.goo.gl/QbjYZfu2S9LebXfc7",
+        link: "https://maps.app.goo.gl/PUB87WrWzEMNoB4q9",
+      },
+      {
+        name: "Posada Los Naranjos",
+        time: "A 20 min de la fiesta",
+        address: "Av. Miguel Hidalgo 193, Centro, 91240 Xico, Ver.",
+        img: hotel8,
+        link: "https://maps.app.goo.gl/F3m9Br5JBdQFR14P9",
       },
     ],
     events: [
@@ -216,10 +223,10 @@ export const GuestProvider = ({ children }) => {
     },
     event: {
       title: "Boda Mariana y Erasto",
-      location: "Salón Hyde",
-      description: `Código de Vestimenta: Formal, Ubicación en maps: https://maps.app.goo.gl/V7iCPBBP1oK879KX6`,
-      startDate: "20241122T190000Z", // formato UTC
-      endDate: "20241123T101000Z",
+      location: "Salón Llanito 33",
+      description: `AGRADECEMOS TU PUNTUALIDAD 7:00PM(GMT-6) ❤️ `,
+      startDate: "20260228T250000Z", // formato UTC
+      endDate: "20260301T081000Z",
     },
   };
 

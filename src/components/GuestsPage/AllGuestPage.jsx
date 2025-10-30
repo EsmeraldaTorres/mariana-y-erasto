@@ -6,7 +6,7 @@ import "jspdf-autotable";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import "./../invitacion.css";
-import portada from "../../assets/img/foto-4.jpg";
+import portada from "../../assets/img/foto-2.jpg";
 import { motion } from "framer-motion"; // Importa Framer Motion
 import { useGuest } from "../../Context/GuestContext";
 

@@ -36,6 +36,9 @@ const FirstPage = ({ isPlaying, togglePlayPause, audioRef, hide }) => {
             {eventData.bride}
           </div>
         </div>
+        <div className="text-help">
+          Desliza hacia arriba <i class="bi bi-arrow-up"></i>
+        </div>
         <div className="text-white text-center player-btn" id="play">
           {isPlaying ? (
             <PauseCircle

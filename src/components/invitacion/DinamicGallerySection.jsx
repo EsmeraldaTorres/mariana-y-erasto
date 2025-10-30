@@ -12,20 +12,20 @@ const DinamicGallerySection = () => {
           data-aos="fade-right"
           data-aos-duration="2500"
         >
-          <p className="x-4"> Únete a nuestra galería dinámica</p>
+          <p className="px-4"> Únete a nuestra galería dinámica</p>
         </div>
       </section>
       <section className="p-4 bg-dinamic-galery">
         <div className="principal-text">
-          <h3
-            className="text-center py-4 font-paris letter-s-1px"
+          <p
+            className="text-center py-4 font-pari letter-s-1px lead "
             data-aos="fade-up"
             data-aos-duration="3000"
           >
             {" "}
             ¡Todas las fotos que tomen ustedes, nuestros invitados, las
             tendremos en una misma galería!
-          </h3>
+          </p>
           <div className="d-flex justify-content-around align-items-center">
             <img className="decoration  " src={lineDecoration} alt="linea" />
           </div>

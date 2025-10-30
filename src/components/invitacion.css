@@ -374,8 +374,8 @@ td {
 }
 .cuenta-regresiva {
   text-align: center;
-  font-size: 1.1rem;
-  color: rgba(240, 248, 255, 0.849);
+  font-size: 1.5rem;
+  color: rgba(240, 248, 255, 0.892);
 }
 
 /* PHOTO GALLERY SECTION */
@@ -445,7 +445,11 @@ td {
   visibility: hidden;
   display: none;
 }
-
+.text-help {
+  bottom: 0;
+  position: absolute;
+  color: rgba(255, 255, 255, 0.691);
+}
 .checkbox-wrapper-53 .container {
   display: block;
   position: relative;
@@ -530,7 +534,7 @@ td {
   font-weight: 500;
 }
 .btn-download {
-  background-color: #b9ac87 !important;
+  background-color: #3f5b8d !important;
   color: white !important;
 }
 .btn-download-pdf-guest,
@@ -592,10 +596,10 @@ td {
 .itinerario {
   height: max-content;
   background-image: linear-gradient(
-      rgba(5, 7, 12, 0.277),
-      rgba(5, 7, 12, 0.277)
+      rgba(5, 7, 12, 0.566),
+      rgba(5, 7, 12, 0.432)
     ),
-    url("../assets/img/pexels-milan-4639620.jpg");
+    url("../assets/img/foto-9.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -641,8 +645,8 @@ td {
       rgba(5, 7, 12, 0.493),
       rgba(5, 7, 12, 0.335)
     ),
-    url("../assets/img/foto-7.jpg");
-  height: 60vh;
+    url("../assets/img/foto-3.jpg");
+  height: 70vh;
   width: auto;
   background-color: rgba(0, 0, 0, 0.575);
   background-position: center;
@@ -667,12 +671,14 @@ td {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
-
+.bg-card {
+  background: rgba(255, 255, 255, 0.445);
+}
 /* photo-window-phrase */
 .window-back {
   height: 40vh;
   max-width: 100%;
-  background-image: url("../assets/img/pexels-barbara-ribeiro-8506039.jpg");
+  background-image: url("../assets/img/foto-6.jpg");
   background-size: cover;
   -webkit-background-size: cover; /* Para Safari y Chrome (versiones antiguas) */
   -moz-background-size: cover; /* Para Firefox (versiones antiguas) */
@@ -685,7 +691,7 @@ td {
   height: 60vh;
   width: 100%;
   background-image: linear-gradient(rgba(5, 7, 12, 0.37), rgba(5, 7, 12, 0.514)),
-    url("../assets/img/collage.png");
+    url("../assets/img/foto-8.jpg");
   background-size: cover;
   -webkit-background-size: cover; /* Para Safari y Chrome (versiones antiguas) */
   -moz-background-size: cover; /* Para Firefox (versiones antiguas) */
@@ -750,18 +756,17 @@ td {
 
 /* Para que no se vea al inicio */
 .navbar-transparent {
-  background: rgba(235, 235, 235, 0.062);
+  background: #203151;
   padding: 1.5rem 0rem;
-  backdrop-filter: blur(3px);
+  /* backdrop-filter: blur(3px); */
   border-bottom: solid 1px rgba(128, 128, 128, 0.383);
 }
 /* nuestro-inicio */
 .nuestro-inicio {
-  background-color: rgb(197, 166, 119);
+  background-color: rgb(146 152 144);
 }
 .nuestro-inicio img {
-  width: 250;
-  height: 180px;
+  width: 90%;
   border: solid 2px whitesmoke;
   border-radius: 5px;
 }
@@ -786,7 +791,7 @@ tr {
 .window-regalos {
   height: max-content;
   max-width: 100%;
-  background-image: url("../assets/img/pexels-milan-4639620.jpg");
+  background-image: url("../assets/img/foto-7.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -799,7 +804,7 @@ tr {
 .last-window {
   height: 100vh;
   max-width: 100%;
-  background-image: url("../assets/img/pexels-olya-kobruseva-4630032.jpg");
+  background-image: url("../assets/img/foto-12.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -828,8 +833,7 @@ tr {
     width: 30%;
   }
   .nuestro-inicio img {
-    width: 450px;
-    height: 350px;
+    width: 60%;
   }
   .icon-sobre {
     font-size: 7rem;
@@ -887,8 +891,7 @@ tr {
     margin-top: 2rem;
   }
   .nuestro-inicio img {
-    width: 600px;
-    height: 500px;
+    width: 30%;
   }
   .card-regalos {
     width: 80%;
@@ -911,6 +914,13 @@ tr {
   }
 }
 @media (min-width: 970px) {
+  .portada-img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 2rem;
+  }
   .table-container {
     display: flex;
     justify-content: center;

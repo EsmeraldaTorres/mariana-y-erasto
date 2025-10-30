@@ -59,7 +59,7 @@ const SecondPage = ({}) => {
               data-aos-duration="1000"
               data-aos-delay="1000"
             >
-              <p className="text-white display-5 font-paris">Faltan</p>
+              <p className="text-white display-5 font-pari mb-0 mt-4">Faltan</p>
               <div id="demo" className="cuenta-regresiva m-0">
                 {timeCountDown.expired ? (
                   <p>- - -</p>

@@ -94,11 +94,10 @@ const Intivacion = () => {
   function abrir() {
     setOpenInvitation(true);
     setShowNavbar(false);
-
+    togglePlayPause();
     window.scrollTo(0, 0);
     setTimeout(function () {
       setHide(false);
-      togglePlayPause();
     }, 2500);
   }
 
@@ -167,7 +166,7 @@ const Intivacion = () => {
     const pdfWidth = pdf.internal.pageSize.getWidth();
     const pdfHeight = pdf.internal.pageSize.getHeight();
 
-    const backgroundImageUrl = "../../2.jpg";
+    const backgroundImageUrl = "../../foto-4.jpg";
     const backgroundImage = new Image();
     backgroundImage.src = backgroundImageUrl;
 
@@ -175,8 +174,8 @@ const Intivacion = () => {
       pdf.addImage(backgroundImage, "JPEG", 0, 0, pdfWidth, pdfHeight);
 
       pdf.setFontSize(24);
-      pdf.setTextColor(255, 255, 255); // Color blanco para el texto
-      pdf.text("Tickets Boda Gaby y Angel", pdfWidth / 2, 100, {
+      // pdf.setTextColor(255, 255, 255);
+      pdf.text("Tickets Boda Maraiana y Erasto", pdfWidth / 2, 100, {
         align: "center",
       });
 
@@ -185,7 +184,7 @@ const Intivacion = () => {
         const qrImageData = qrCanvas.toDataURL("image/png");
         pdf.addImage(qrImageData, "PNG", pdfWidth / 2 - 50, 120, 100, 100);
       }
-      pdf.save("tickets_boda_gaby_y_angel.pdf");
+      pdf.save("tickets_boda_mariana_y_erasto.pdf");
       setLoadingPdf(false);
     };
   };
@@ -559,10 +558,10 @@ const Intivacion = () => {
                           <div className="w-100">
                             <div className="justify-content-center mt-4">
                               <div className="text-center">
-                                <h2 className="font-paris font-olive mb-4 font-gold ">
+                                <h2 className="font-pari font-olive mb-4 font-gold ">
                                   Tickets {guest?.principalName}
                                 </h2>
-                                <h3 className="mb-4 ">
+                                <h3 className="mb-4 lead ">
                                   Favor de no escanear con ningún dispositivo
                                 </h3>
                                 <div ref={printRef}>
@@ -582,8 +581,8 @@ const Intivacion = () => {
                                           key={index}
                                           className="w-100 d-flex justify-content-center flex-column"
                                         >
-                                          <p className="mb-1 display-6 font-gold">
-                                            {acomp.name}
+                                          <p className="mb-1 fw-bold display-6 font-gold">
+                                            - {acomp.name}
                                           </p>
                                         </div>
                                       )
@@ -592,17 +591,17 @@ const Intivacion = () => {
                               </div>
                             </div>
                             <div className="mb-4 mt-4">
-                              <h3 className="font-olive text-center">
+                              <h3 className="lead text-center">
                                 Muestra tu CÓDIGO QR{" "}
                                 <span className="font-weigth-bold">solo</span> a
                                 los recepcionistas del evento para entrar al
                                 salón.
                               </h3>
-                              <p className="display-6 text-center my-4 p-0">
+                              <p className="lead text-center my-4 p-0">
                                 No compartas ésta invitación con nadie más ni
                                 tus códigos QR.
                               </p>
-                              <div className="text-center d-flex lead flex-column">
+                              <div className="text-center fw-bold d-flex lead flex-column">
                                 Agenda nuestro evento en tus calendarios
                                 <AddToCalendar type="google" />
                                 <AddToCalendar type="mobile" />
