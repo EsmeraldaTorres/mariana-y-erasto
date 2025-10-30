@@ -206,6 +206,7 @@ hr {
   display: flex !important;
   height: 100% !important;
   flex-direction: column;
+  overflow-y: scroll;
 }
 .principal-name-guest {
   padding-top: 2rem;
