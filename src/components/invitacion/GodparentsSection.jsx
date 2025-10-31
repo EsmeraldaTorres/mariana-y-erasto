@@ -56,9 +56,7 @@ const GodparentsSection = () => {
                     ? names.map((name, i) =>
                         i === 0 ? (
                           <React.Fragment key={i}>
-                            <p className="card-text display-6">
-                              {name} <span className="text-white">ho</span>
-                            </p>
+                            <p className="card-text display-6">{name}</p>
                           </React.Fragment>
                         ) : (
                           <p className="card-text display-6" key={i}>
