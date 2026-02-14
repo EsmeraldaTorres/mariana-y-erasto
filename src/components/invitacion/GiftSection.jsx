@@ -47,7 +47,7 @@ const GiftSection = () => {
                     alt="logo Liverpool"
                   />
                 }
-                link="https://mesaderegalos.liverpool.com.mx/gestiondeeventos/listaderegalos/51777246"
+                link="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51777246"
                 buttonText="Ir a mesa de regalos"
               />
               {/* <GiftOption

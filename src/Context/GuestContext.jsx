@@ -207,7 +207,7 @@ export const GuestProvider = ({ children }) => {
         alt: "iglesia",
         name: "Salón Llanito 33",
         address: "Zaragoza 98, Col.Centro Xico, Veracruz-Llave, Mexico",
-        mapLink: "https://maps.app.goo.gl/id5RNFCL6dwysMhw6",
+        mapLink: "https://maps.app.goo.gl/2mY9Qnr1KKYKkoK88",
         delay: 500,
       },
     ],
